@@ -1,13 +1,91 @@
 @use "adventure";
-@use "link/variables" as links;
-@use "list/mixins" as lists;
-@use "font/variables" as fonts;
-
-.button-list {
-
-}
+@use "variables";
+@use "mixins";
+@use "link/variables" as link;
+@use "list/mixins" as list;
+@use "font/variables" as font;
 
 button,
 .button {
-
+    position: relative;
+    overflow: hidden;
+    min: {
+        width: 10rem;
+    }
+    text-align: center;
+    cursor: pointer;
+    display: inline-block;
+    border: {
+        width: 2px;
+        style: solid;
+        color: variables.$border-color;
+        radius: variables.$border-radius;
+    }
+    color: variables.$color;
+    padding: {
+        top: 1rem;
+        right: 2rem;
+        bottom: 1rem;
+        left: 2rem;
+    }
+    background: {
+        color: var(--grey-dark-color-15);
+    }
+    transition:
+            color variables.$hover-transition-out,
+            border-color variables.$hover-transition-out,
+            background-color variables.$hover-transition-out;
+    @include mixins.hover-gradient-base();
+    @include mixins.hover-gradient-active();
+    background: {
+        color: variables.$background;
+    }
+    &.big {
+        @include adventure.breakpoint("medium") {
+            padding: {
+                top: 2rem;
+                right: 4rem;
+                bottom: 2rem;
+                left: 4rem;
+            }
+            font: {
+                size: var(--font-size-large);
+            }
+        }
+    }
+    span {
+        position: relative;
+        z-index: 2;
+        text-transform: uppercase;
+        font: {
+            size: adventure.font-size("medium");
+            weight: font.$font-weight-bold;
+        }
+    }
+    &:hover {
+        @include mixins.hover-gradient-inactive();
+        color: variables.$hover-color;
+        border: 2px solid variables.$hover-border-color;
+        transition:
+                color variables.$hover-transition-in,
+                border-color variables.$hover-transition-in,
+                background-color variables.$hover-transition-in;
+        transition-delay: 0.075s;
+        background: {
+            color: variables.$background-hover-color;
+        }
+        &::before {
+            transition: transform variables.$hover-transition-in;
+        }
+    }
+    &.secondary {
+        border: {
+            color: variables.$secondary-border-color;
+        }
+        color: variables.$secondary-color;
+        &:hover {
+            color: variables.$secondary-hover-color;
+            border: 2px solid variables.$secondary-hover-border-color;
+        }
+    }
 }

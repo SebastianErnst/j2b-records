@@ -1,5 +1,78 @@
 @use "adventure";
+@use "variables";
 
 @include adventure.icon-font-face() {
     src: url("data:application/x-font-ttf;charset=utf-8;base64,AAEAAAALAIAAAwAwT1MvMg8SBSgAAAC8AAAAYGNtYXAXVtKHAAABHAAAAFRnYXNwAAAAEAAAAXAAAAAIZ2x5Zg28B34AAAF4AAAAxGhlYWQjWmPJAAACPAAAADZoaGVhB74DxgAAAnQAAAAkaG10eAn8AAAAAAKYAAAAFGxvY2EAKAB2AAACrAAAAAxtYXhwAAcALwAAArgAAAAgbmFtZZlKCfsAAALYAAABhnBvc3QAAwAAAAAEYAAAACAAAwL+AZAABQAAApkCzAAAAI8CmQLMAAAB6wAzAQkAAAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAAAAAAAABAAADpAAPA/8AAQAPAAEAAAAABAAAAAAAAAAAAAAAgAAAAAAADAAAAAwAAABwAAQADAAAAHAADAAEAAAAcAAQAOAAAAAoACAACAAIAAQAg6QD//f//AAAAAAAg6QD//f//AAH/4xcEAAMAAQAAAAAAAAAAAAAAAQAB//8ADwABAAAAAAAAAAAAAgAANzkBAAAAAAEAAAAAAAAAAAACAAA3OQEAAAAAAQAAAAAAAAAAAAIAADc5AQAAAAABAAD/wAP8A8AALAAAASIHDgEHBhUxFBceARcWMzE4ATEyNz4BNzY1MTQmJxcJATcXASYnLgEnJiMxAf5pXV2LKCgoKItdXWlqXV2KKCgtKAH+F/7ndaQBgSAmJVEsLC4DwCgoi15dampdXosoKCgoi15dak+QPQL9VAGUV/ICJhsVFh0ICAAAAQAAAAAAADjLem9fDzz1AAsEAAAAAADgIA+mAAAAAOAgD6YAAP/AA/wDwAAAAAgAAgAAAAAAAAABAAADwP/AAAAEAAAAAAAD/AABAAAAAAAAAAAAAAAAAAAABQQAAAAAAAAAAAAAAAIAAAAD/AAAAAAAAAAKABQAHgBiAAEAAAAFAC0AAQAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAOAK4AAQAAAAAAAQAHAAAAAQAAAAAAAgAHAGAAAQAAAAAAAwAHADYAAQAAAAAABAAHAHUAAQAAAAAABQALABUAAQAAAAAABgAHAEsAAQAAAAAACgAaAIoAAwABBAkAAQAOAAcAAwABBAkAAgAOAGcAAwABBAkAAwAOAD0AAwABBAkABAAOAHwAAwABBAkABQAWACAAAwABBAkABgAOAFIAAwABBAkACgA0AKRpY29tb29uAGkAYwBvAG0AbwBvAG5WZXJzaW9uIDEuMABWAGUAcgBzAGkAbwBuACAAMQAuADBpY29tb29uAGkAYwBvAG0AbwBvAG5pY29tb29uAGkAYwBvAG0AbwBvAG5SZWd1bGFyAFIAZQBnAHUAbABhAHJpY29tb29uAGkAYwBvAG0AbwBvAG5Gb250IGdlbmVyYXRlZCBieSBJY29Nb29uLgBGAG8AbgB0ACAAZwBlAG4AZQByAGEAdABlAGQAIABiAHkAIABJAGMAbwBNAG8AbwBuAC4AAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA") format("truetype");
+}
+
+.icon {
+    &::before {
+        font: {
+            size: var(--font-size-large);
+        }
+    }
+}
+
+.teamspeak {
+    &::before {
+        @include adventure.icon(variables.$icon-teamspeak);
+    }
+}
+
+.flask {
+    &::before {
+        @include adventure.icon(variables.$icon-lab);
+    }
+}
+
+.facebook {
+    &::before {
+        @include adventure.icon(variables.$icon-facebook);
+    }
+}
+
+.discord {
+    &::before {
+        @include adventure.icon(variables.$icon-discord);
+    }
+}
+
+
+
+.instagram {
+    &::before {
+        @include adventure.icon(variables.$icon-instagram);
+    }
+}
+
+.youtube {
+    &::before {
+        @include adventure.icon(variables.$icon-youtube);
+    }
+}
+
+.arrow-right {
+    &:before {
+        @include adventure.icon(variables.$icon-arrow-right);
+    }
+}
+.arrow-down {
+    &:before {
+        @include adventure.icon(variables.$icon-arrow-down);
+    }
+}
+.arrow-left {
+    &:before {
+        @include adventure.icon(variables.$icon-arrow-left);
+    }
+}
+.circle-right {
+    &:before {
+        @include adventure.icon(variables.$icon-circle-right);
+    }
+}
+.circle-left {
+    &:before {
+        @include adventure.icon(variables.$icon-circle-left);
+    }
 }

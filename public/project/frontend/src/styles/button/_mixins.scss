@@ -1,0 +1,47 @@
+@use "variables";
+@use "utils" as utils;
+
+@mixin hover-gradient() {
+    overflow: hidden;
+    &::after {
+        @include utils.absolute-stretch();
+        z-index: 1;
+        content: "";
+        background: {
+            image: linear-gradient(to right, transparent 75%, variables.$hover-border-color);
+        }
+        transform: translateX(50%);
+        transition: transform 0.3s ease-out;
+    }
+    &:hover {
+        &::before {
+            transform: translateX(0);
+        }
+    }
+}
+
+@mixin hover-gradient-base() {
+    overflow: hidden;
+    &::after {
+        @include utils.absolute-stretch();
+        z-index: 1;
+        content: "";
+        background: {
+            image: linear-gradient(to right, transparent 75%, variables.$border-color);
+        }
+        transform: translateX(50%);
+        transition: transform 0.3s ease-out;
+    }
+}
+
+@mixin hover-gradient-active() {
+    &::after {
+        transform: translateX(0);
+    }
+}
+
+@mixin hover-gradient-inactive() {
+    &::after {
+        transform: translateX(50%);
+    }
+}

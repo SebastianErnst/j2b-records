@@ -3,6 +3,8 @@
 
 section,
 .section {
+    z-index: adventure.z-index("section");
+    position: relative;
     margin: {
         right: auto;
         left: auto;

@@ -18,7 +18,9 @@
   "author": "Sebastian Ernst, Timo Weigel",
   "license": "ISC",
   "dependencies": {
-    "@electronic-minds/adventure-scss": "^0.0.36"
+    "@electronic-minds/adventure-scss": "^0.0.36",
+    "jquery": "^3.6.1",
+    "swiper": "5.4.5"
   },
   "devDependencies": {
     "webpack": "^5.75.0",

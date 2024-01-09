@@ -1,0 +1,15 @@
+@use "adventure";
+
+$background: transparent;
+$background-hover-color: white;
+$color: white;
+$hover-color: black;
+$border-color: adventure.color("corporate");
+$hover-border-color: white;
+$hover-transition-in: 0.3s ease-out;
+$hover-transition-out: 0.15s ease-out;
+$secondary-color: white;
+$secondary-border-color: white;
+$secondary-hover-color: white;
+$secondary-hover-border-color: adventure.color("corporate");
+$border-radius: 4px;

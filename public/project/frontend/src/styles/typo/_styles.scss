@@ -1,5 +1,7 @@
 @use "adventure";
+@use "mixins";
 @use "font" as font;
+@use "utils" as utils;
 
 html {
     @include font.family-default();
@@ -38,41 +40,25 @@ h4,
         top: 0;
     }
     font-family: font.$font-family-headline;
+    @include utils.text-shadow();
+}
+
+h1,
+.h1 {
+    @include mixins.headline-h1;
 }
 
 h2,
 .h2 {
-    font: {
-        size: adventure.font-size("xxlarge");
-        weight: font.$font-weight-headline-bold;
-    }
-    color: adventure.color("corporate");
-    margin: {
-        bottom: var(--spacing-large);
-    }
-    letter-spacing: 0;
+    @include mixins.headline-h2;
 }
 
 h3,
 .h3 {
-    font: {
-        size: adventure.font-size("large");
-        weight: font.$font-weight-headline-semi-bold;
-    }
-    color: adventure.color("corporate");
-    margin: {
-        bottom: var(--spacing-medium);
-    }
+    @include mixins.headline-h3;
 }
 
 h4,
 .h4 {
-    font: {
-        size: adventure.font-size("medium");
-        weight: font.$font-weight-headline-semi-bold;
-    }
-    color: adventure.color("corporate");
-    margin: {
-        bottom: var(--spacing-default);
-    }
+    @include mixins.headline-h4;
 }

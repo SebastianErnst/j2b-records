@@ -1,7 +1,22 @@
 @use "adventure";
-@use "list/mixins" as lists;
+@use "list/mixins" as list;
 @use "font/variables" as fonts;
 
-footer {
-
+.footer {
+    padding: {
+        top: var(--spacing-large);
+        bottom: var(--spacing-large);
+    }
+    .section-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+    .footer-list {
+        @include list.reset-list();
+        margin: {
+            left: auto;
+        }
+        display: flex;
+        gap: var(--spacing-large);
+    }
 }

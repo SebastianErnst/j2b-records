@@ -1,21 +1,37 @@
+import FeatureSlider from "./FeatureSlider/FeatureSlider";
+import ServiceSlider from "./ServiceSlider/ServiceSlider";
+import MainNav from "./MainNav/MainNav";
 class Application {
     constructor() {
+        this.initFeatureSlider();
+        this.initServiceSlider();
         this.initMainNav();
     }
+
     initMainNav() {
-        const $triggerMainMenu = document.querySelector('[data-trigger-main-menu]');
-        const $targetMainMenu = document.querySelector('[data-target-main-menu]');
+        const mainNavs = document.querySelectorAll('[data-main-nav]');
 
-        $triggerMainMenu.addEventListener('click', () => {
-            const hasClassIsActive = $targetMainMenu.classList.contains('is-active');
-
-            if (hasClassIsActive) {
-                $targetMainMenu.classList.remove('is-active');
-            } else {
-                $targetMainMenu.classList.add('is-active');
-            }
+        mainNavs.forEach((mainNav) => {
+            new MainNav(mainNav);
         });
     }
+
+    initFeatureSlider() {
+        const feautureSliders = document.querySelectorAll('[data-feature-slider]');
+
+        feautureSliders.forEach((feautureSlider) => {
+            new FeatureSlider(feautureSlider);
+        });
+    }
+
+    initServiceSlider() {
+        const serviceSliders = document.querySelectorAll('[data-service-slider]');
+
+        serviceSliders.forEach((serviceSlider) => {
+            new ServiceSlider(serviceSlider);
+        });
+    }
+
 }
 
 new Application();

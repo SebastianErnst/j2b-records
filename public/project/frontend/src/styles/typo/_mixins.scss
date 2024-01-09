@@ -1,0 +1,54 @@
+@use "adventure";
+@use "font" as font;
+
+@mixin headline-h1 {
+    font: {
+        size: adventure.font-size("xxlarge");
+        weight: font.$font-weight-headline-bold;
+    }
+    line-height: 1.4;
+    color: adventure.color("corporate");
+    margin: {
+        bottom: var(--spacing-large);
+    }
+    letter-spacing: 0;
+}
+
+@mixin headline-h2 {
+    font: {
+        size: adventure.font-size("xlarge");
+        weight: font.$font-weight-headline-bold;
+    }
+    line-height: 1.3;
+    color: adventure.color("corporate");
+    margin: {
+        bottom: var(--spacing-large);
+    }
+    letter-spacing: 0;
+}
+
+@mixin headline-h3 {
+    font: {
+        size: adventure.font-size("large");
+        weight: font.$font-weight-headline-bold;
+    }
+    line-height: 1.2;
+    color: adventure.color("corporate");
+    margin: {
+        bottom: var(--spacing-large);
+    }
+    letter-spacing: 0;
+}
+
+@mixin headline-h4 {
+    font: {
+        size: adventure.font-size("large");
+        weight: font.$font-weight-headline-semi-bold;
+    }
+    line-height: 1.2;
+    color: adventure.color("corporate");
+    margin: {
+        bottom: var(--spacing-large);
+    }
+    letter-spacing: 0;
+}

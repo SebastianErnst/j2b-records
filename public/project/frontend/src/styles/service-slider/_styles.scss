@@ -1,0 +1,140 @@
+@use "adventure";
+@use "utils" as utils;
+@use "button/variables" as button;
+@use "list/mixins" as list;
+@use "font/variables" as font;
+
+.service-slider {
+    overflow: hidden;
+    position: relative;
+    .swiper {
+        position: relative;
+    }
+    .shadow-layer {
+        @include utils.absolute-stretch();
+        background: {
+            image: linear-gradient(to right,
+                rgba(black, 0.90) 10%,
+                rgba(black, 0.85) 20%,
+                rgba(black, 0.75) 30%,
+                rgba(black, 0.65) 40%,
+                transparent);
+        }
+    }
+    .swiper-slide {
+        overflow: hidden;
+        height: auto;
+        background: {
+            position: top;
+            size: cover;
+            color: adventure.color("grey");
+        }
+        width: 100%;
+        position: relative;
+        cursor: pointer;
+        @include adventure.breakpoint("medium") {
+            aspect-ratio: 1.85 / 1;
+        }
+        &::before,
+        &::after {
+            pointer-events: none;
+            content: "";
+            position: absolute;
+            right: 0;
+            width: 200%;
+            height: 50%;
+            background: black;
+            z-index: 1;
+        }
+        &::before {
+            top: 0;
+            transform: {
+                origin: bottom right;
+            }
+            rotate: 60deg;
+        }
+        &::after {
+            bottom: 0;
+            transform: {
+                origin: top right;
+            }
+            rotate: -60deg;
+        }
+        .content {
+            max-width: 75%;
+            position: relative;
+            padding: {
+                top: var(--spacing-large);
+                right: var(--spacing-large);
+                bottom: var(--spacing-large);
+                left: var(--spacing-large);
+            }
+            .flag {
+                display: inline-block;
+                background: {
+                    color: adventure.color("corporate")
+                }
+                padding: var(--spacing-default);
+                border: {
+                    radius: button.$border-radius;
+                }
+                font: {
+                    weight: font.$font-weight-bold;
+                }
+                margin: {
+                    bottom: var(--spacing-default);
+                }
+            }
+            p {
+                font: {
+                    size: adventure.font-size("medium");
+                }
+            }
+        }
+        filter: blur(2px) grayscale(1);
+        transition: filter 750ms ease-in-out;
+        &.swiper-slide-active {
+            filter: blur(0) grayscale(0);
+        }
+        &:last-child {
+            width: 100%;
+            &::before {
+                content: unset;
+            }
+        }
+    }
+    .navigation {
+        display: flex;
+        gap: var(--spacing-small);
+        width: 100%;
+        z-index: 1;
+        font: {
+            size: 40px;
+        }
+        padding: {
+            top: var(--spacing-large);
+        }
+        justify-content: center;
+        @include adventure.breakpoint("medium") {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            flex: {
+                direction: column;
+            }
+            align-items: flex-end;
+            justify-content: unset;
+            font: {
+                size: 55px;
+            }
+        }
+        > * {
+            cursor: pointer;
+            line-height: 1;
+        }
+        .swiper-button-disabled {
+            opacity: 0.25;
+            cursor: unset;
+        }
+    }
+}

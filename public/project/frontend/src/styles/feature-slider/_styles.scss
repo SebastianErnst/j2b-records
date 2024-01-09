@@ -1,0 +1,156 @@
+@use "adventure";
+@use "variables";
+@use "utils" as utils;
+@use "list/mixins" as list;
+
+.feature-slider {
+    padding: {
+        top: 0;
+        bottom: 0;
+    }
+    .swiper {
+        z-index: 1;
+        overflow: hidden;
+        .swiper-slide {
+            height: auto;
+            background: {
+                position: top;
+                size: cover;
+                image: linear-gradient(to right, black 66%, adventure.color("corporate"));
+            }
+            padding: {
+                top: var(--spacing-large);
+            }
+            aspect-ratio: 16/9;
+            display: flex;
+            align-items: center;
+            @include adventure.breakpoint("medium") {
+                aspect-ratio: unset;
+                padding: {
+                    bottom: 250px;
+                }
+                min-height: 800px;
+            }
+            .background-image {
+                @include utils.absolute-stretch();
+                background: {
+                    size: cover;
+                    position: center;
+                }
+                mix-blend-mode: luminosity;
+            }
+            .section-wrapper {
+                position: relative;
+                .content {
+                    max: {
+                        width: 75%;
+                    }
+                    @include adventure.breakpoint("medium") {
+                        max: {
+                            width: 66.66%;
+                        }
+                    }
+                    @include adventure.breakpoint("large") {
+                        max: {
+                            width: 50%;
+                        }
+                    }
+                }
+                h2,
+                p {
+                    @include utils.text-shadow;
+                }
+                h2 {
+                    margin: {
+                        bottom: var(--spacing-default);
+                    }
+                }
+                p {
+                    font: {
+                        size: adventure.font-size("large");
+                    }
+                }
+            }
+        }
+    }
+    .thumbnail-list {
+        position: relative;
+        z-index: 2;
+        padding: {
+            top: var(--spacing-large);
+        }
+        @include adventure.breakpoint("medium") {
+            padding: {
+                top: 0;
+                bottom: 0;
+            }
+        }
+        ul {
+            @include list.reset-list();
+            display: grid;
+            grid: {
+                template: {
+                    columns: repeat(auto-fit, minmax(150px, 1fr));
+                }
+            }
+            gap: var(--spacing-default);
+            @include adventure.breakpoint("medium") {
+                position: absolute;
+                left: var(--spacing-default);
+                top: var(--spacing-default);
+                width: calc( 100% - (var(--spacing-default)* 2));
+                transform: translateY(calc(-100% - var(--spacing-xlarge)));
+            }
+            li {
+                cursor: pointer;
+                position: relative;
+                border: {
+                    width: 3px;
+                    style: solid;
+                    color: white;
+                }
+                aspect-ratio: 16/9;
+                background: {
+                    size: cover;
+                }
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: border-color variables.$thumbnail-transition;
+                &:hover {
+                    border: {
+                        color: adventure.color("corporate");
+                    }
+                    .background-image {
+                        filter: blur(0) grayscale(1);
+                    }
+                }
+                &.active {
+                    border: {
+                        color: adventure.color("corporate");
+                    }
+                    .background-image {
+                        filter: blur(0) grayscale(0);
+                    }
+                }
+                .background-image {
+                    @include utils.absolute-stretch();
+                    background: {
+                        size: cover;
+                    }
+                    filter: blur(2px) grayscale(1);
+                    transition: filter variables.$thumbnail-transition
+                }
+                span {
+                    @include utils.text-shadow();
+                    position: relative;
+                    z-index: 1;
+                    margin: {
+                        bottom: 0;
+                    }
+                    color: white;
+                }
+            }
+        }
+    }
+}

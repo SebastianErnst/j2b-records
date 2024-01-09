@@ -14,10 +14,16 @@
   },
   "modules": {
     "byIdentifier": {
-      "./src/scripts/main.js": 630
+      "./node_modules/jquery/dist/jquery.js": 755,
+      "./node_modules/swiper/js/swiper.min.js": 999,
+      "./src/scripts/main.js": 630,
+      "./src/scripts/main.js|9665211cfe72c2954ebccbe61d16b99a": 347,
+      "./src/scripts/main.js|d5950d443ca8e8b1ea2bd38360cab387": 348
     },
     "usedIds": [
-      630
+      630,
+      755,
+      999
     ]
   }
 }

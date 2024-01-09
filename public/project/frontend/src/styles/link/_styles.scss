@@ -1,6 +1,34 @@
 @use "adventure";
 @use "variables";
+@use "button/variables" as button;
 
 a {
-
+    text-decoration: none;
+    &:not([class]) {
+        color: variables.$color;
+        position: relative;
+        transition: color button.$hover-transition-out;
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: {
+                color: variables.$color;
+            }
+            transition: background-color button.$hover-transition-out;
+        }
+        &:hover {
+            transition: color button.$hover-transition-in;
+            color: variables.$hover-color;
+            &::before {
+                transition: background-color button.$hover-transition-in;
+                background: {
+                    color: variables.$hover-color;
+                }
+            }
+        }
+    }
 }

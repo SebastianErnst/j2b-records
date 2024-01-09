@@ -1,1 +1,6 @@
-$transition-duration-and-easing: .25s ease-out;
+@use "adventure";
+@use "font" as font;
+
+$color: adventure.color("corporate");
+$hover-color: font.$font-color;
+$hover-transition: color 0.2s ease-out;

@@ -1,7 +1,84 @@
 @use "adventure";
-@use "list/mixins" as lists;
-@use "font/variables" as fonts;
+@use "variables";
+@use "utils/mixins" as utils;
+@use "list/mixins" as list;
+@use "font/variables" as font;
+@use "button/variables" as button;
 
 header {
-
+    width: 100vw;
+    position: fixed;
+    z-index: adventure.z-index("header");
+    height: variables.$menu-height;
+    top: 0;
+    left: 50%;
+    right: 0;
+    transform: translate(-50%, 0);
+    background: {
+        color: black;
+    }
+    transition: transform 0.2s ease-out;
+    &.hidden {
+        transform: translate(-50%, -100%);
+    }
+    .section-wrapper {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+    .logo {
+        display: block;
+        background: {
+            image: url("logo.jpg");
+            size: cover;
+            position: center center;
+        }
+        height: 100%;
+        aspect-ratio: 1;
+    }
+    ul {
+        @include list.reset-list();
+        height: 100%;
+        display: flex;
+        li {
+            height: 100%;
+        }
+        a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            padding: {
+                right: var(--spacing-default);
+                left: var(--spacing-default);
+            }
+            color: white;
+            border: {
+                bottom: 2px solid transparent;
+            }
+            transition: border-color 0.2s ease-out, color 0.2s ease-out;
+            font: {
+                size: adventure.font-size("medium");
+            }
+            &::before {
+                content: unset;
+            }
+            &:hover {
+                border: {
+                    bottom: {
+                        color: white;
+                    }
+                }
+            }
+            &.is-active {
+                color: adventure.color("corporate");
+                border: {
+                    bottom: {
+                        color: adventure.color("corporate");
+                    }
+                }
+            }
+        }
+    }
 }

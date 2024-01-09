@@ -1,15 +1,20 @@
+@use "../../node_modules/swiper/css/swiper.min.css";
+
 @use "adventure";
+@use "base";
 @use "button";
+@use "feature-slider";
 @use "font";
 @use "footer";
 @use "form";
 @use "header";
-@use "html";
 @use "icon";
 @use "image";
 @use "link";
 @use "list";
-@use "navigation";
 @use "root";
 @use "section";
+@use "service-slider";
+@use "social-media-overview";
+@use "stage";
 @use "typo";

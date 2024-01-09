@@ -1,0 +1,5 @@
+@use "adventure";
+
+$max-width-narrow: adventure.rem-calc(728);
+$max-width: adventure.rem-calc(1364);
+$max-width-wide: adventure.rem-calc(1920);

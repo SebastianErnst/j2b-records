@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" href="{{ asset('/project/frontend/build/main.css') }}" />
+    <link rel="icon" href="/favicon.svg">
+
+    <script src="{{ asset('/project/frontend/build/runtime.js') }}" defer></script>
+    <script src="{{ asset('/project/frontend/build/vendor.js') }}" defer></script>
+    <script src="{{ asset('/project/frontend/build/main.js') }}" defer></script>
+
     {% block meta %}
         {% include "@SuluWebsite/Extension/seo.html.twig" with {
             "seo": extension.seo|default([]),
@@ -13,44 +20,35 @@
             "shadowBaseLocale": shadowBaseLocale|default(),
         } %}
     {% endblock %}
-
-    {% block style %}{% endblock %}
+    {% set loopInt = 0 %}
 </head>
 <body>
-    <header>
-        {% block header %}
-            <nav>
-                <ul>
+<header>
+    {% block header %}
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ sulu_content_root_path() }}">Homepage</a>
+                </li>
+
+                {% for item in sulu_navigation_root_tree('main') %}
                     <li>
-                        <a href="{{ sulu_content_root_path() }}">Homepage</a>
+                        <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
+                           title="{{ item.title }}">{{ item.title }}</a>
                     </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    {% endblock %}
+</header>
 
-                    {% for item in sulu_navigation_root_tree('main') %}
-                        <li>
-                            <a href="{{ sulu_content_path(item.url, item.webspaceKey) }}"
-                               title="{{ item.title }}">{{ item.title }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </nav>
-        {% endblock %}
-    </header>
+<main>
+    {% block content %}{% endblock %}
+</main>
 
-    <form action="{{ path('sulu_search.website_search') }}" method="GET">
-        <input name="q" type="text" placeholder="Search"/>
-        <input type="submit" value="Go"/>
-    </form>
+<footer>
+    {% block footer %}{% endblock %}
+</footer>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
-
-    <footer>
-        {% block footer %}
-            <p>Copyright {{ 'now'|date('Y') }} SULU</p>
-        {% endblock %}
-    </footer>
-
-    {% block javascripts %}{% endblock %}
 </body>
 </html>

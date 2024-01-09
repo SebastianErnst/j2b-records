@@ -1,0 +1,12 @@
+@use "adventure";
+
+$font-family: Inter, Arial, Helvetica, system-ui, sans-serif;
+$font-family-headline: Fira Sans, Arial, Helvetica, system-ui, sans-serif;
+$font-color: adventure.color("grey-dark");
+
+$font-weight-thin: 300;
+$font-weight-default: 500;
+$font-weight-bold: 700;
+
+$font-weight-headline-semi-bold: 500;
+$font-weight-headline-bold: 700;

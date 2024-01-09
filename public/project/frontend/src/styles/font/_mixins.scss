@@ -1,0 +1,14 @@
+@use "../adventure" as adventure;
+@use "variables";
+
+@mixin family-default() {
+    font: {
+        family: variables.$font-family;
+    }
+}
+
+@mixin family-headline() {
+    font: {
+        family: variables.$font-family-headline;
+    }
+}

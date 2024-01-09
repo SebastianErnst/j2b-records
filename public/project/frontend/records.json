@@ -1,0 +1,23 @@
+{
+  "chunks": {
+    "byName": {
+      "main": 179,
+      "runtime": 666,
+      "vendor": 736
+    },
+    "bySource": {
+      "0 main": 666,
+      "1 main": 736,
+      "2 main": 179
+    },
+    "usedIds": []
+  },
+  "modules": {
+    "byIdentifier": {
+      "./src/scripts/main.js": 630
+    },
+    "usedIds": [
+      630
+    ]
+  }
+}

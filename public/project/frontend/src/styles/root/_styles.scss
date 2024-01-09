@@ -1,0 +1,21 @@
+@use "adventure";
+
+:root {
+    // Spacings
+    --spacing-xsmall: #{adventure.rem-calc(3, 14)};
+    --spacing-small: #{adventure.rem-calc(5, 14)};
+    --spacing-default: #{adventure.rem-calc(8, 14)};
+    --spacing-medium: #{adventure.rem-calc(12, 14)};
+    --spacing-large: #{adventure.rem-calc(16, 14)};
+    --spacing-xlarge: #{adventure.rem-calc(48, 14)};
+    --spacing-xxlarge: #{adventure.rem-calc(64, 14)};
+    @include adventure.breakpoint("medium") {
+        --spacing-xsmall: 0.3rem;
+        --spacing-small: 0.625rem;
+        --spacing-default: 1rem;
+        --spacing-medium: 1.5rem;
+        --spacing-large: 2rem;
+        --spacing-xlarge: 4rem;
+        --spacing-xxlarge: 8rem;
+    }
+}

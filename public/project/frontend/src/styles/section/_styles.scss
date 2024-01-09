@@ -1,0 +1,51 @@
+@use "adventure";
+@use "variables";
+
+section,
+.section {
+    margin: {
+        right: auto;
+        left: auto;
+    }
+    max-width: 1920px;
+    width: 100%;
+    padding: {
+        top: var(--spacing-xlarge);
+        bottom: var(--spacing-xlarge);
+    }
+}
+
+.section-wrapper {
+    margin: {
+        right: auto;
+        left: auto;
+    }
+    width: 100%;
+    padding: {
+        right: var(--spacing-large);
+        left: var(--spacing-large);
+    }
+    max: {
+        width: variables.$max-width;
+    }
+    .narrow & {
+        max: {
+            width: variables.$max-width-narrow;
+        }
+        text: {
+            align: center;
+        }
+    }
+    .wide &{
+        max: {
+            width: variables.$max-width-wide;
+        }
+    }
+    > * {
+        &:last-child {
+            margin: {
+                bottom: 0;
+            }
+        }
+    }
+}

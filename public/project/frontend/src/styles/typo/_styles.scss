@@ -1,0 +1,78 @@
+@use "adventure";
+@use "font" as font;
+
+html {
+    @include font.family-default();
+    font: {
+        weight: 300;
+    }
+    line: {
+        height: 1.43;
+    }
+    scroll: {
+        behavior: smooth;
+    }
+}
+
+p {
+    margin: {
+        top: 0;
+        bottom: var(--spacing-medium);
+    }
+    &.intro {
+        font: {
+            weight: font.$font-weight-bold;
+        }
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+.h1,
+.h2,
+.h3,
+.h4 {
+    margin: {
+        top: 0;
+    }
+    font-family: font.$font-family-headline;
+}
+
+h2,
+.h2 {
+    font: {
+        size: adventure.font-size("xxlarge");
+        weight: font.$font-weight-headline-bold;
+    }
+    color: adventure.color("corporate");
+    margin: {
+        bottom: var(--spacing-large);
+    }
+    letter-spacing: 0;
+}
+
+h3,
+.h3 {
+    font: {
+        size: adventure.font-size("large");
+        weight: font.$font-weight-headline-semi-bold;
+    }
+    color: adventure.color("corporate");
+    margin: {
+        bottom: var(--spacing-medium);
+    }
+}
+
+h4,
+.h4 {
+    font: {
+        size: adventure.font-size("medium");
+        weight: font.$font-weight-headline-semi-bold;
+    }
+    color: adventure.color("corporate");
+    margin: {
+        bottom: var(--spacing-default);
+    }
+}

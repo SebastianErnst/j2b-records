@@ -4,12 +4,12 @@
           xsi:schemaLocation="http://schemas.sulu.io/webspace/webspace http://schemas.sulu.io/webspace/webspace-1.1.xsd">
     <!-- See: http://docs.sulu.io/en/latest/book/webspaces.html how to configure your webspace-->
 
-    <name>example.com</name>
-    <key>example</key>
+    <name>j2b-records.de</name>
+    <key>j2b-records</key>
 
     <localizations>
         <!-- See: http://docs.sulu.io/en/latest/book/localization.html how to add new localizations -->
-        <localization language="en" default="true"/>
+        <localization language="de" default="true"/>
     </localizations>
 
     <default-templates>
@@ -36,28 +36,28 @@
 
     <portals>
         <portal>
-            <name>example.com</name>
-            <key>example</key>
+            <name>j2b-records.de</name>
+            <key>j2b-records</key>
 
             <environments>
                 <environment type="prod">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="de">{host}</url>
                     </urls>
                 </environment>
                 <environment type="stage">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="de">{host}</url>
                     </urls>
                 </environment>
                 <environment type="test">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="de">{host}</url>
                     </urls>
                 </environment>
                 <environment type="dev">
                     <urls>
-                        <url language="en">{host}</url>
+                        <url language="de">{host}</url>
                     </urls>
                 </environment>
             </environments>

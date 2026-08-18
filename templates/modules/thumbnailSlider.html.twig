@@ -1,0 +1,34 @@
+    {% for thumbnailSliderItem in content.thumbnailSliderItems %}
+        {% if loop.first %}
+            <section class="thumbnail-slider">
+            <div class="swiper swiper-container" data-thumbnail-slider="">
+            <div class="swiper-wrapper">
+        {% endif %}
+        <div class="swiper-slide">
+            <div class="background-image"
+                 style="background-image: url('{{ thumbnailSliderItem.thumbnailSliderItemImage.url }}')"></div>
+            <div class="shadow-layer"></div>
+            <div class="section-wrapper">
+                <div class="content">
+                    <h2 class="h3">{{ thumbnailSliderItem.thumbnailSliderItemTitle }}</h2>
+                    <p>{{ thumbnailSliderItem.thumbnailSliderItemText }}</p>
+                </div>
+            </div>
+        </div>
+        {% if loop.last %}
+            </div>
+            </div>
+            <div class="section-wrapper thumbnail-list">
+                <ul data-thumbnail-slider-thumbnail-list="">
+                    {% for thumbnailSliderItem in content.thumbnailSliderItems %}
+                        <li class="">
+                            <div class="background-image"
+                                 style="background-image: url('{{ thumbnailSliderItem.thumbnailSliderItemImage.url }}')"></div>
+                            <span class="h2">{{ thumbnailSliderItem.thumbnailSliderItemTitle }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            </section>
+        {% endif %}
+    {% endfor %}

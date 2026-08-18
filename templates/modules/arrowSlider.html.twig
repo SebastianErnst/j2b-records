@@ -1,0 +1,31 @@
+    {% for arrowSliderItem in content.arrowSliderItems %}
+        {% if loop.first %}
+            <section id="testimonials" class="section service-slider">
+            <div class="section-wrapper">
+            <h2 class="h2">{{ content.arrowSliderHeadline }}</h2>
+            <div class="swiper swiper-container-initialized swiper-container-horizontal" data-arrow-slider="">
+            <div class="swiper-wrapper">
+        {% endif %}
+        <div class="swiper-slide swiper-slide-active"
+             style="background-image: url('{{ arrowSliderItem.arrowSliderItemImage.url }}')">
+            <div class="shadow-layer"></div>
+            <div class="content">
+                <span class="flag">{{ arrowSliderItem.arrowSliderItemFeatureLabel }}</span>
+                <h2 class="h2">{{ arrowSliderItem.arrowSliderItemTitle }}</h2>
+                <p>{{ arrowSliderItem.arrowSliderItemText }}</p>
+            </div>
+        </div>
+        {% if loop.last %}
+            </div>
+            <div class="navigation">
+                <div class="previous circle-left swiper-button-disabled" tabindex="-1" role="button"
+                     aria-label="Previous slide" aria-disabled="true"></div>
+                <div class="next circle-right" tabindex="0" role="button" aria-label="Next slide"
+                     aria-disabled="false"></div>
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+            </div>
+            </div>
+            </section>
+        {% endif %}
+    {% endfor %}

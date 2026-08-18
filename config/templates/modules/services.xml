@@ -1,0 +1,57 @@
+<?xml version="1.0" ?>
+<section name="services"
+         xmlns="http://schemas.sulu.io/template/template"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <meta>
+        <title lang="en">Services</title>
+        <title lang="de">Services</title>
+    </meta>
+    <properties>
+        <property name="servicesHeadline" type="text_line">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Titel</title>
+            </meta>
+        </property>
+        <block name="servicesItems" default-type="servicesItem" minOccurs="4" maxOccurs="4">
+            <params>
+                <param name="add_button_text">
+                    <meta>
+                        <title lang="en">Add slide</title>
+                        <title lang="de">Slide hinzufügen</title>
+                    </meta>
+                </param>
+            </params>
+            <types>
+                <type name="servicesItem">
+                    <properties>
+                        <property name="servicesItemTitle" type="text_line" mandatory="true">
+                            <meta>
+                                <title lang="en">Title</title>
+                                <title lang="de">Titel</title>
+                            </meta>
+                        </property>
+
+                        <property name="servicesItemText" type="text_editor" mandatory="true">
+                            <meta>
+                                <title lang="en">Text</title>
+                                <title lang="de">Text</title>
+                            </meta>
+                        </property>
+
+                        <property name="servicesItemImage" type="single_media_selection" mandatory="true">
+                            <meta>
+                                <title lang="en">Image</title>
+                                <title lang="de">Bild</title>
+                            </meta>
+                            <params>
+                                <param name="types" value="image"/>
+                            </params>
+                        </property>
+                    </properties>
+                </type>
+            </types>
+        </block>
+    </properties>
+</section>

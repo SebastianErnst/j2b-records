@@ -3,7 +3,12 @@
 @use "utils" as utils;
 @use "list/mixins" as list;
 
-.feature-slider {
+.thumbnail-slider-headline {
+    padding: {
+        bottom: var(--spacing-large);
+    }
+}
+.thumbnail-slider {
     padding: {
         top: 0;
         bottom: 0;
@@ -19,17 +24,28 @@
                 image: linear-gradient(to right, black 66%, adventure.color("corporate"));
             }
             padding: {
-                top: var(--spacing-large);
+                top: var(--spacing-xlarge);
             }
             aspect-ratio: 16/9;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             @include adventure.breakpoint("medium") {
                 aspect-ratio: unset;
                 padding: {
                     bottom: 250px;
                 }
                 min-height: 800px;
+            }
+            .shadow-layer {
+                @include utils.absolute-stretch();
+                background: {
+                    image: linear-gradient(to right,
+                            rgba(black, 0.90) 60%,
+                            rgba(black, 0.85) 70%,
+                            rgba(black, 0.75) 80%,
+                            rgba(black, 0.65) 90%,
+                            transparent);
+                }
             }
             .background-image {
                 @include utils.absolute-stretch();
@@ -42,17 +58,13 @@
             .section-wrapper {
                 position: relative;
                 .content {
+                    position: relative;
                     max: {
                         width: 75%;
                     }
-                    @include adventure.breakpoint("medium") {
-                        max: {
-                            width: 66.66%;
-                        }
-                    }
                     @include adventure.breakpoint("large") {
                         max: {
-                            width: 50%;
+                            width: 66%;
                         }
                     }
                 }

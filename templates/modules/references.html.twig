@@ -1,0 +1,36 @@
+<section class="references" id="references">
+    <div class="section-wrapper">
+        <h2 class="h2">{{ content.referencesHeadline }}</h2>
+        <div class="youtube-playlist" data-youtube-playlist="">
+            <div class="media-wrapper">
+                {% set youtubeEmbedUrl = '' %}
+                {% for referencesItem in content.referencesItems %}
+                    {% if loop.first %}
+                        {% set youtubeEmbedUrl = 'https://www.youtube.com/embed/' ~ referencesItem.referencesItemYoutubeId %}
+                    {% endif %}
+                {% endfor %}
+                <iframe
+                        data-name="youtube"
+                        src="{{ youtubeEmbedUrl }}"
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                </iframe>
+            </div>
+
+            <ul class="song-list" data-song-list="">
+                {% for referencesItem in content.referencesItems %}
+                    {% set youtubeEmbedUrl = 'https://www.youtube.com/embed/' ~ referencesItem.referencesItemYoutubeId %}
+                    <li class="song{% if loop.first %} is-active{% endif %}"
+                         data-youtube-embed-url="{{ youtubeEmbedUrl }}"
+                    >
+                        <span class="artist">{{ referencesItem.referencesItemArtist }}</span>
+                        <span class="dash">-</span>
+                        <span class="title">{{ referencesItem.referencesItemName }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

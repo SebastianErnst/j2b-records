@@ -1,0 +1,22 @@
+{% for servicesItem in content.servicesItems %}
+    {% if loop.first %}
+        <section class="services-section" id="services">
+        <div class="section-wrapper">
+        <h2 class="h2">{{ content.servicesHeadline }}</h2>
+        <ul class="services">
+    {% endif %}
+    <li>
+
+        <div class="background-image lazyload" {% if servicesItem.servicesItemImage is not null %}data-bg="{{ servicesItem.servicesItemImage.url }}"{% endif %}></div>
+        <div class="shadow-layer"></div>
+        <div class="content">
+            <h3 class="h3">{{ servicesItem.servicesItemTitle }}</h3>
+            <p>{{ servicesItem.servicesItemText|raw }}</p>
+        </div>
+    </li>
+    {% if loop.last %}
+        </ul>
+        </div>
+        </section>
+    {% endif %}
+{% endfor %}

@@ -3,6 +3,7 @@
 
 section,
 .section {
+    scroll-margin-top: 50px;
     z-index: adventure.z-index("section");
     position: relative;
     margin: {
@@ -13,7 +14,11 @@ section,
     width: 100%;
     padding: {
         top: var(--spacing-xlarge);
-        bottom: var(--spacing-xlarge);
+    }
+    @include adventure.breakpoint("medium") {
+        padding: {
+            top: var(--spacing-xxlarge);
+        }
     }
 }
 

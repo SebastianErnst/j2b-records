@@ -1,0 +1,96 @@
+<?xml version="1.0" ?>
+<section name="socialMedia"
+         xmlns="http://schemas.sulu.io/template/template"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <meta>
+        <title lang="en">Social Media</title>
+        <title lang="de">Social Media</title>
+    </meta>
+    <properties>
+
+        <property name="socialMediaTitle" type="text_line">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Titel</title>
+            </meta>
+        </property>
+
+        <property name="socialMediaImage" type="single_media_selection" mandatory="true">
+            <meta>
+                <title lang="en">Image</title>
+                <title lang="de">Bild</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
+        </property>
+
+        <block name="socialMediaItems" default-type="socialMedia">
+            <params>
+                <param name="add_button_text">
+                    <meta>
+                        <title lang="en">Add link</title>
+                        <title lang="de">Link hinzufügen</title>
+                    </meta>
+                </param>
+            </params>
+            <types>
+                <type name="socialMedia">
+                    <properties>
+
+                        <property name="socialMediaType" type="single_select" mandatory="true">
+                            <meta>
+                                <title lang="en">Social media Provider</title>
+                                <title lang="de">Social Media Anbieter</title>
+                            </meta>
+
+                            <params>
+                                <param name="default_value" value=""/>
+
+                                <param name="values" type="collection">
+                                    <param name="facebook">
+                                        <meta>
+                                            <title lang="en">Facebook</title>
+                                            <title lang="de">Facebook</title>
+                                        </meta>
+                                    </param>
+
+                                    <param name="youtube">
+                                        <meta>
+                                            <title lang="en">Youtube</title>
+                                            <title lang="de">Youtube</title>
+                                        </meta>
+                                    </param>
+
+                                    <param name="instagram">
+                                        <meta>
+                                            <title lang="en">Instagram</title>
+                                            <title lang="de">Instagram</title>
+                                        </meta>
+                                    </param>
+
+                                    <param name="tikTok">
+                                        <meta>
+                                            <title lang="en">TikTok</title>
+                                            <title lang="de">TikTok</title>
+                                        </meta>
+                                    </param>
+
+                                </param>
+                            </params>
+                        </property>
+
+                        <property name="socialMediaUrl" type="url" mandatory="true">
+                            <meta>
+                                <title lang="en">URL</title>
+                                <title lang="de">URL</title>
+                            </meta>
+                        </property>
+
+                    </properties>
+                </type>
+            </types>
+        </block>
+    </properties>
+</section>

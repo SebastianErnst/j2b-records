@@ -17,6 +17,10 @@ html {
 }
 
 p {
+    font: {
+        size: adventure.font-size("medium");
+    }
+    line-height: 1.8;
     margin: {
         top: 0;
         bottom: var(--spacing-medium);
@@ -25,6 +29,12 @@ p {
         font: {
             weight: font.$font-weight-bold;
         }
+    }
+}
+
+strong {
+    font: {
+        weight: font.$font-weight-bold;
     }
 }
 
@@ -41,6 +51,7 @@ h4,
     }
     font-family: font.$font-family-headline;
     @include utils.text-shadow();
+    position: relative;
 }
 
 h1,

@@ -1,0 +1,37 @@
+
+<header>
+    <div class="section-wrapper">
+        <a class="logo" href="./"></a>
+        <div class="burger-wrapper" data-burger="">
+            <div class="burger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        {% if template == 'homepage' %}
+        <ul data-main-nav="">
+            <li>
+                <a href="#home" class="active">Home</a>
+            </li>
+            <li>
+                <a href="#services" class="">Services</a>
+            </li>
+            <li>
+                <a href="#references" class="">{{ 'references' | trans }}</a>
+            </li>
+            <li>
+                <a href="#about-us" class="">{{ 'about-us' | trans }}</a>
+            </li>
+            <li class="highlight">
+                <a href="#contact" class="">{{ 'send-a-request' | trans }}</a>
+            </li>
+        {% else %}
+            <ul>
+                <li>
+                    <a href="./">Home</a>
+                </li>
+        {% endif %}
+        </ul>
+    </div>
+</header>

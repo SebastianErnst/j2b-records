@@ -20,6 +20,8 @@ DirectoryIndex index.php
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    RewriteRule ^qr-code/visitenkarte/?$ https://www.j2b-records.de/ [R=302,L]
+
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
     # project in a subdirectory, the base path will be prepended to allow proper
@@ -55,6 +57,7 @@ DirectoryIndex index.php
 
     # Rewrite all other queries to the front controller.
     RewriteRule ^ %{ENV:BASE}/index.php [L]
+
 </IfModule>
 
 <IfModule !mod_rewrite.c>
@@ -66,3 +69,10 @@ DirectoryIndex index.php
         # RedirectTemp cannot be used instead
     </IfModule>
 </IfModule>
+
+#<IfModule mod_headers.c>
+#Header set Access-Control-Allow-Origin "*"
+#    Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
+#    Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+#    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-eval' https://api.kiprotect.com https://googleads.g.doubleclick.net; object-src 'none'; base-uri 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self' https://api.kiprotect.com https://googleads.g.doubleclick.net; frame-src 'self' youtube.com www.youtube.com; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests; block-all-mixed-content;"
+#</IfModule>

@@ -1,0 +1,13 @@
+<section class="about-us-section" id="about-us">
+    <div class="section-wrapper">
+        <h2 class="h2">{{ content.contentSectionHeadline }}</h2>
+        <div class="about-us">
+            <div class="image">
+                <img class="lazyload" data-src="{{ content.contentSectionImage.url }}" alt="">
+            </div>
+            <div class="text">
+                {{ content.contentSectionText|raw }}
+            </div>
+        </div>
+    </div>
+</section>

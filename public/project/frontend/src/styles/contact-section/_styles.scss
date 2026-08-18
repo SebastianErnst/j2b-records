@@ -1,0 +1,12 @@
+@use "adventure";
+
+.contact-section {
+    .section-wrapper {
+        gap: var(--spacing-xxlarge);
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        @include adventure.breakpoint("large") {
+            grid-template-columns:minmax(0, 2fr) minmax(0, 1fr);
+        }
+    }
+}

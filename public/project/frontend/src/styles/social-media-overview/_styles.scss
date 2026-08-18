@@ -3,60 +3,40 @@
 @use "list/mixins" as list;
 @use "font/variables" as font;
 
-.social-media-overview {
-    background: {
-        position: top;
-        size: cover;
+.social-media-overview-list {
+    @include list.reset-list();
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: var(--spacing-large);
+    margin: {
+        bottom: var(--spacing-xlarge);
     }
-    .section-wrapper {
-        display: flex;
-        flex: {
-            direction: column;
-        }
-    }
-    .button {
-        justify-self: center;
-        margin: {
-            left: auto;
-            right: auto;
-            bottom: var(--spacing-large);
-        }
-    }
-    .social-media-overview-list {
-        @include list.reset-list();
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: var(--spacing-large);
-        margin: {
-            bottom: var(--spacing-xlarge);
-        }
-        li {
-            a {
-                &::before {
-                    font: {
-                        size: adventure.font-size("xxlarge");
-                    }
+    li {
+        a {
+            &::before {
+                font: {
+                    size: adventure.font-size("xxlarge");
                 }
-                border: {
-                    radius: button.$border-radius;
-                }
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                aspect-ratio: 1;
+            }
+            border: {
+                radius: button.$border-radius;
+            }
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 1;
+            background: {
+                color: adventure.color("corporate");
+            }
+            color: font.$font-color;
+            transition: background-color button.$hover-transition-out, color button.$hover-transition-out;
+            &:hover,
+            &:focus {
+                transition: background-color button.$hover-transition-in, color button.$hover-transition-in;
                 background: {
-                    color: adventure.color("corporate");
+                    color: white;
                 }
-                color: font.$font-color;
-                transition: background-color button.$hover-transition-out, color button.$hover-transition-out;
-                &:hover,
-                &:focus {
-                    transition: background-color button.$hover-transition-in, color button.$hover-transition-in;
-                    background: {
-                        color: white;
-                    }
-                    color: button.$hover-color;
-                }
+                color: button.$hover-color;
             }
         }
     }

@@ -1,0 +1,85 @@
+@use "adventure";
+@use "../icon/variables" as icons;
+@use "../button/variables" as buttons;
+@use "../font/variables" as fonts;
+
+.youtube-playlist {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-default);
+    grid-template-areas:
+        "media"
+        "controls"
+        "song-list"
+    ;
+    @include adventure.breakpoint("large") {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        grid-template-areas:
+        "media song-list"
+        "media controls"
+    ;
+    }
+    [data-type="placeholder"] {
+        align-self: flex-start;
+        .cm-buttons {
+            display: none !important;
+        }
+    }
+    audio {
+        display: none;
+    }
+    .media-wrapper {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        grid-area: media;
+        width: 100%;
+        max: {
+            width: 100%;
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        iframe {
+            aspect-ratio: 16 / 9;
+            width: 100%;
+        }
+    }
+    .song-list {
+        grid-area: song-list;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        .song {
+            border: {
+                bottom: 1px solid adventure.color("grey");
+            }
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            padding: var(--spacing-medium);
+            @include adventure.breakpoint("large") {
+                padding: var(--spacing-default);
+            }
+            &:first-child {
+                border: {
+                    top: 1px solid adventure.color("grey");
+                }
+            }
+            transition:
+                    background-color buttons.$hover-transition-out;
+            &:hover {
+                background: {
+                    color: adventure.color("grey-dark");
+                }
+                transition:
+                        background-color buttons.$hover-transition-in;
+            }
+            &.is-active {
+                color: adventure.color("corporate");
+            }
+            .dash {
+                padding: 0 var(--spacing-small);
+            }
+        }
+    }
+}

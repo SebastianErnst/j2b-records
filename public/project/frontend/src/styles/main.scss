@@ -1,9 +1,11 @@
 @use "../../node_modules/swiper/css/swiper.min.css";
 
+@use "about-us";
 @use "adventure";
 @use "base";
 @use "button";
-@use "feature-slider";
+@use "contact-section";
+@use "thumbnail-slider";
 @use "font";
 @use "footer";
 @use "form";
@@ -14,7 +16,9 @@
 @use "list";
 @use "root";
 @use "section";
+@use "services";
 @use "service-slider";
 @use "social-media-overview";
-@use "stage";
+@use "stage-homepage";
 @use "typo";
+@use "youtube-playlist";

@@ -1,0 +1,64 @@
+<?xml version="1.0" ?>
+<section name="arrowSlider"
+         xmlns="http://schemas.sulu.io/template/template"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <meta>
+        <title lang="en">Arrow Slider</title>
+        <title lang="de">Arrow Slider</title>
+    </meta>
+    <properties>
+        <property name="arrowSliderHeadline" type="text_line">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Titel</title>
+            </meta>
+        </property>
+        <block name="arrowSliderItems" default-type="arrowSliderItem">
+            <params>
+                <param name="add_button_text">
+                    <meta>
+                        <title lang="en">Add slide</title>
+                        <title lang="de">Slide hinzufügen</title>
+                    </meta>
+                </param>
+            </params>
+            <types>
+                <type name="arrowSliderItem">
+                    <properties>
+                        <property name="arrowSliderItemFeatureLabel" type="text_line" mandatory="true">
+                            <meta>
+                                <title lang="en">Feature label</title>
+                                <title lang="de">Spitzmarke</title>
+                            </meta>
+                        </property>
+
+                        <property name="arrowSliderItemTitle" type="text_line" mandatory="true">
+                            <meta>
+                                <title lang="en">Title</title>
+                                <title lang="de">Titel</title>
+                            </meta>
+                        </property>
+
+                        <property name="arrowSliderItemText" type="text_area" mandatory="true">
+                            <meta>
+                                <title lang="en">Text</title>
+                                <title lang="de">Text</title>
+                            </meta>
+                        </property>
+
+                        <property name="arrowSliderItemImage" type="single_media_selection" mandatory="true">
+                            <meta>
+                                <title lang="en">Image</title>
+                                <title lang="de">Bild</title>
+                            </meta>
+                            <params>
+                                <param name="types" value="image"/>
+                            </params>
+                        </property>
+                    </properties>
+                </type>
+            </types>
+        </block>
+    </properties>
+</section>

@@ -1,39 +1,34 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale|split('_')[0] }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+{#        <script defer src="https://api.kiprotect.com/v1/privacy-managers/8a41ca91e6e2921e1f566f724b10f9b7/klaro.js"></script>#}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="{{ asset('/project/frontend/build/main.css') }}" />
-    <link rel="icon" href="/favicon.svg">
+        <link rel="stylesheet" href="{{ asset('/project/frontend/build/main.css') }}" />
+        <link rel="icon" href="/favicon.svg">
 
-    <script src="{{ asset('/project/frontend/build/runtime.js') }}" defer></script>
-    <script src="{{ asset('/project/frontend/build/vendor.js') }}" defer></script>
-    <script src="{{ asset('/project/frontend/build/main.js') }}" defer></script>
+        <script src="{{ asset('/project/frontend/build/runtime.js') }}" defer></script>
+        <script src="{{ asset('/project/frontend/build/vendor.js') }}" defer></script>
+        <script src="{{ asset('/project/frontend/build/main.js') }}" defer></script>
 
-    {% block meta %}
-        {% include "@SuluWebsite/Extension/seo.html.twig" with {
-            "seo": extension.seo|default([]),
-            "content": content|default([]),
-            "localizations": localizations|default([]),
-            "shadowBaseLocale": shadowBaseLocale|default(),
-        } %}
-    {% endblock %}
-    {% set loopInt = 0 %}
-</head>
-<body>
-<header>
-    {% block header %}{% endblock %}
-</header>
+        {% block meta %}
+            {% include "@SuluWebsite/Extension/seo.html.twig" with {
+                "seo": extension.seo|default([]),
+                "content": content|default([]),
+                "localizations": localizations|default([]),
+                "shadowBaseLocale": shadowBaseLocale|default(),
+            } %}
+        {% endblock %}
+        {% set loopInt = 0 %}
 
-<main>
-    {% block content %}{% endblock %}
-</main>
-
-<footer>
-    {% block footer %}{% endblock %}
-</footer>
-
-</body>
+    </head>
+    <body>
+        {% include 'modules/header.html.twig' %}
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        {% include 'modules/footer.html.twig' %}
+    </body>
 </html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+<section name="references"
+         xmlns="http://schemas.sulu.io/template/template"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <meta>
+        <title lang="en">References</title>
+        <title lang="de">Referenzen</title>
+    </meta>
+    <properties>
+        <property name="referencesHeadline" type="text_line">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Titel</title>
+            </meta>
+        </property>
+        <block name="referencesItems" default-type="referencesItem">
+            <params>
+                <param name="add_button_text">
+                    <meta>
+                        <title lang="en">Add Song</title>
+                        <title lang="de">Song hinzufügen</title>
+                    </meta>
+                </param>
+            </params>
+            <types>
+                <type name="referencesItem">
+                    <properties>
+                        <property name="referencesItemName" type="text_line" mandatory="true">
+                            <meta>
+                                <title lang="en">Name</title>
+                                <title lang="de">Name</title>
+                            </meta>
+                        </property>
+
+                        <property name="referencesItemArtist" type="text_line" mandatory="true">
+                            <meta>
+                                <title lang="en">Artist</title>
+                                <title lang="de">Künstler</title>
+                            </meta>
+                        </property>
+
+                        <property name="referencesItemYoutubeId" type="text_line" mandatory="true">
+                            <meta>
+                                <title lang="en">Youtube ID</title>
+                                <title lang="de">Youtube ID</title>
+                            </meta>
+                            <params>
+                                <param name="types" value="text"/>
+                            </params>
+                        </property>
+
+                    </properties>
+                </type>
+            </types>
+        </block>
+    </properties>
+</section>

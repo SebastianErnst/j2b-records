@@ -1,0 +1,46 @@
+@use "adventure";
+@use "utils" as utils;
+@use "list/mixins" as lists;
+@use "font/variables" as font;
+
+.services {
+    @include lists.reset-list();
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: var(--spacing-large);
+    @include adventure.breakpoint("medium") {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    li {
+        position: relative;
+        background: {
+            position: top;
+            size: cover;
+            image: linear-gradient(to right, black 66%, adventure.color("corporate"));
+        }
+        .shadow-layer {
+            @include utils.absolute-stretch();
+            background: {
+                image: linear-gradient(to right,
+                    rgba(black, 0.90) 10%,
+                    rgba(black, 0.85) 20%,
+                    rgba(black, 0.75) 30%,
+                    rgba(black, 0.65) 40%,
+                    transparent);
+            }
+        }
+        .background-image {
+            @include utils.absolute-stretch();
+            background: {
+                size: cover;
+                position: center;
+            }
+            mix-blend-mode: luminosity;
+        }
+        .content {
+            position: relative;
+            padding: var(--spacing-large);
+            @include utils.text-shadow;
+        }
+    }
+}

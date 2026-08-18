@@ -2,17 +2,24 @@
 @use "utils" as utils;
 @use "header/variables" as header;
 
-.stage {
+.stage-homepage {
     height: calc(100svh - #{header.$menu-height});
     width: 100%;
-    background: {
-        repeat: no-repeat;
-        position: center;
-        size: cover;
-    }
     position: relative;
     display: flex;
     align-items: center;
+    background: {
+        repeat: no-repeat;
+        position: 65% 50%;
+        size: cover;
+    }
+    @include adventure.breakpoint("medium") {
+        background: {
+            repeat: no-repeat;
+            position: center;
+            size: cover;
+        }
+    }
     &::before {
         content: "";
         @include utils.absolute-stretch();

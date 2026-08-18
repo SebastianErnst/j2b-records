@@ -10,11 +10,21 @@
     <cacheLifetime>604800</cacheLifetime>
 
     <meta>
-        <title lang="en">Default</title>
+        <title lang="en">Defaut</title>
         <title lang="de">Standard</title>
     </meta>
 
     <properties>
+
+        <property name="url" type="resource_locator" mandatory="true">
+            <meta>
+                <title lang="en">Resourcelocator</title>
+                <title lang="de">Adresse</title>
+            </meta>
+
+            <tag name="sulu.rlp"/>
+        </property>
+
         <property name="title" type="text_line" mandatory="true">
             <meta>
                 <title lang="en">Title</title>
@@ -27,13 +37,21 @@
             <tag name="sulu.rlp.part"/>
         </property>
 
-        <property name="url" type="resource_locator" mandatory="true">
+        <property name="subTitle" type="text_line">
             <meta>
-                <title lang="en">Resourcelocator</title>
-                <title lang="de">Adresse</title>
+                <title lang="en">Sub title</title>
+                <title lang="de">Untertitel</title>
             </meta>
+        </property>
 
-            <tag name="sulu.rlp"/>
+        <property name="headerImage" type="single_media_selection">
+            <meta>
+                <title lang="en">Header Image</title>
+                <title lang="de">Bild für Kopfbereich</title>
+            </meta>
+            <params>
+                <param name="types" value="image"/>
+            </params>
         </property>
 
         <property name="article" type="text_editor">
@@ -42,5 +60,6 @@
                 <title lang="de">Artikel</title>
             </meta>
         </property>
+
     </properties>
 </template>

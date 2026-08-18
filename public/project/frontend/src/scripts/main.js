@@ -1,13 +1,38 @@
-import FeatureSlider from "./FeatureSlider/FeatureSlider";
-import ServiceSlider from "./ServiceSlider/ServiceSlider";
+import "./klaroConfig";
+import lazySizes from 'lazysizes';
+import "lazysizes/plugins/unveilhooks/ls.unveilhooks";
+import ThumbnailSlider from "./ThumbnailSlider/ThumbnailSlider";
 import MainNav from "./MainNav/MainNav";
+import ArrowSlider from "./ArrowSlider/ArrowSlider";
+import YoutubePlaylist from "./YoutubePlaylist/YoutubePlaylist";
 class Application {
     constructor() {
-        this.initFeatureSlider();
-        this.initServiceSlider();
+
+        this.initThumbnailSlider();
+        this.initArrowSlider();
         this.initMainNav();
+        this.initYoutubePlaylist();
+        this.initScrollAfterFormSend();
     }
 
+    initScrollAfterFormSend() {
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+
+            if (urlParams.get('send') === 'true') {
+                const contactElement = document.getElementById('contact');
+
+                if (contactElement) {
+                    contactElement.scrollIntoView();
+                }
+
+                urlParams.delete('send');
+                const newUrl = window.location.pathname + urlParams.toString();
+                history.replaceState(null, '', newUrl);
+            }
+        });
+
+    }
     initMainNav() {
         const mainNavs = document.querySelectorAll('[data-main-nav]');
 
@@ -16,22 +41,30 @@ class Application {
         });
     }
 
-    initFeatureSlider() {
-        const feautureSliders = document.querySelectorAll('[data-feature-slider]');
+    initThumbnailSlider() {
+        const thumbnailSliders = document.querySelectorAll('[data-thumbnail-slider]');
 
-        feautureSliders.forEach((feautureSlider) => {
-            new FeatureSlider(feautureSlider);
+        thumbnailSliders.forEach((thumbnailSlider) => {
+            new ThumbnailSlider(thumbnailSlider);
         });
     }
 
-    initServiceSlider() {
-        const serviceSliders = document.querySelectorAll('[data-service-slider]');
+    initArrowSlider() {
+        const arrowSliders = document.querySelectorAll('[data-arrow-slider]');
 
-        serviceSliders.forEach((serviceSlider) => {
-            new ServiceSlider(serviceSlider);
+        arrowSliders.forEach((arrowSlider) => {
+            new ArrowSlider(arrowSlider);
         });
     }
 
+    initYoutubePlaylist() {
+        const youtubePlaylistWrappers = document.querySelectorAll('[data-youtube-playlist]');
+
+        youtubePlaylistWrappers.forEach((youtubePlaylistWrapper) => {
+            new YoutubePlaylist(youtubePlaylistWrapper);
+        });
+    }
 }
 
 new Application();
+

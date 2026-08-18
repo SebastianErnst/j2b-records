@@ -1,0 +1,19 @@
+@use "adventure";
+@use "../icon/variables" as icons;
+@use "../button/variables" as buttons;
+@use "../font/variables" as fonts;
+
+.about-us {
+    display: grid;
+    gap: var(--spacing-large);
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    @include adventure.breakpoint("medium") {
+        gap: var(--spacing-xlarge);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .image {
+        img {
+            max-width: 100%;
+        }
+    }
+}

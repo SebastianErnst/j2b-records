@@ -1,0 +1,27 @@
+<section id="contact" class="contact-section">
+    <div class="section-wrapper">
+        <div class="form">
+            <h2 class="h2">{{ content.formHeadline }}</h2>
+            {% if content.form %}
+                {% if app.request.get('send') != 'true' %}
+                    {# FORM THEME #}
+                    {% form_theme content.form '@SuluForm/themes/basic.html.twig' %}
+                    {{ form(content.form) }}
+                {% else %}
+                    {{ view.form.entity.successText|raw }}
+                {% endif %}
+            {% endif %}
+        </div>
+        <div class="social-media">
+            <h2 class="h2">{{ content.socialMediaTitle }}</h2>
+            <ul class="social-media-overview-list">
+                {% for socialMediaItem in content.socialMediaItems %}
+                    <li>
+                        <a href="{{ socialMediaItem.socialMediaUrl }}"
+                           class="icon {{ socialMediaItem.socialMediaType }}"></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</section>

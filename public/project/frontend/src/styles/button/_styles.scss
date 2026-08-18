@@ -5,8 +5,8 @@
 @use "list/mixins" as list;
 @use "font/variables" as font;
 
-button,
-.button {
+.button,
+button:not([class]){
     position: relative;
     overflow: hidden;
     min: {
@@ -40,6 +40,10 @@ button,
     background: {
         color: variables.$background;
     }
+    font: {
+        size: adventure.font-size("medium");
+        weight: font.$font-weight-bold;
+    }
     &.big {
         @include adventure.breakpoint("medium") {
             padding: {
@@ -49,17 +53,8 @@ button,
                 left: 4rem;
             }
             font: {
-                size: var(--font-size-large);
+                size: adventure.font-size("medium");
             }
-        }
-    }
-    span {
-        position: relative;
-        z-index: 2;
-        text-transform: uppercase;
-        font: {
-            size: adventure.font-size("medium");
-            weight: font.$font-weight-bold;
         }
     }
     &:hover {

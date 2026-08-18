@@ -2,5 +2,57 @@
 @use "font/variables" as fonts;
 
 form {
-
+    > div {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--spacing-large);
+        @include adventure.breakpoint("medium") {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: var(--spacing-medium);
+        }
+        > div {
+            display: grid;
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+            &.width-half {
+                grid-column: span 1;
+            }
+            &.width-full {
+                grid-column: span 1;
+                @include adventure.breakpoint("medium") {
+                    grid-column: span 2;
+                }
+            }
+            label {
+                font: {
+                    size: adventure.font-size("small");
+                    weight: fonts.$font-weight-bold;
+                }
+            }
+            input,
+            textarea {
+                font: {
+                    family: fonts.$font-family;
+                    size: adventure.font-size("default");
+                    weight: fonts.$font-weight-default;
+                }
+                padding: {
+                    top: var(--spacing-small);
+                    right: var(--spacing-small);
+                    bottom: var(--spacing-small);
+                    left: var(--spacing-small);
+                }
+            }
+            textarea {
+                resize: vertical;
+                min-height: 150px;
+            }
+            button {
+                max-width: fit-content;
+                margin: {
+                    right: auto;
+                    left: auto;
+                }
+            }
+        }
+    }
 }

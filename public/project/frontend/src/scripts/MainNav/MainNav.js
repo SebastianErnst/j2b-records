@@ -1,6 +1,17 @@
 export default class MainNav {
     constructor(node) {
+        const burger = document.querySelector('[data-burger]');
         const $mainNavItems = node.querySelectorAll('li a');
+
+        burger.addEventListener('click', () => {
+            if (burger.classList.contains('is-active')) {
+                burger.classList.remove('is-active');
+                node.classList.remove('is-active');
+            } else {
+                burger.classList.add('is-active');
+                node.classList.add('is-active');
+            }
+        });
 
         $mainNavItems.forEach(($mainNavItem) => {
             $mainNavItem.addEventListener('click', (e) => {
@@ -8,9 +19,13 @@ export default class MainNav {
                 const identifier = e.target.href.split('#')[1];
                 const $target = document.getElementById(identifier);
                 if ($target === null) {
-                    console.log('No Section with the specified identifier found');
+                    console.log(`No Section with the identifier: ${identifier}found`);
                     return;
                 }
+
+                node.classList.remove('is-active');
+                burger.classList.remove('is-active');
+
                 $mainNavItems.forEach((el) => {
                     el.classList.remove('is-active');
                 });
@@ -22,8 +37,8 @@ export default class MainNav {
         let observer;
         let options = {
             root: null,
-            rootMargin: '0px',
-            threshold: [0.75, 0.75]
+            rootMargin: `-${window.innerHeight / 3}px`,
+            threshold: [0, 0]
         };
 
         observer = new IntersectionObserver(entries => {
@@ -51,8 +66,10 @@ export default class MainNav {
 
     scrollTo (id) {
         const element = document.getElementById(id);
-        const y = element.getBoundingClientRect().top - 80;
 
-        window.scrollTo({top: y, behavior: 'smooth'});
+        element.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     }
 }

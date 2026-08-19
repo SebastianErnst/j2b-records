@@ -1,38 +1,18 @@
-import "./klaroConfig";
 import lazySizes from 'lazysizes';
 import "lazysizes/plugins/unveilhooks/ls.unveilhooks";
 import ThumbnailSlider from "./ThumbnailSlider/ThumbnailSlider";
 import MainNav from "./MainNav/MainNav";
 import ArrowSlider from "./ArrowSlider/ArrowSlider";
-import YoutubePlaylist from "./YoutubePlaylist/YoutubePlaylist";
+import AudioPlayer from "./AudioPlayer/AudioPlayer";
 class Application {
     constructor() {
 
         this.initThumbnailSlider();
         this.initArrowSlider();
         this.initMainNav();
-        this.initYoutubePlaylist();
-        this.initScrollAfterFormSend();
+        this.initAudioPlayer();
     }
 
-    initScrollAfterFormSend() {
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-
-            if (urlParams.get('send') === 'true') {
-                const contactElement = document.getElementById('contact');
-
-                if (contactElement) {
-                    contactElement.scrollIntoView();
-                }
-
-                urlParams.delete('send');
-                const newUrl = window.location.pathname + urlParams.toString();
-                history.replaceState(null, '', newUrl);
-            }
-        });
-
-    }
     initMainNav() {
         const mainNavs = document.querySelectorAll('[data-main-nav]');
 
@@ -57,14 +37,14 @@ class Application {
         });
     }
 
-    initYoutubePlaylist() {
-        const youtubePlaylistWrappers = document.querySelectorAll('[data-youtube-playlist]');
+    initAudioPlayer() {
+        const audioPlayerWrappers = document.querySelectorAll('[data-audio-player]');
 
-        youtubePlaylistWrappers.forEach((youtubePlaylistWrapper) => {
-            new YoutubePlaylist(youtubePlaylistWrapper);
+        audioPlayerWrappers.forEach((audioPlayerWrapper) => {
+            const audioPlayer = new AudioPlayer(audioPlayerWrapper);
+            audioPlayer.init();
         });
     }
 }
 
 new Application();
-

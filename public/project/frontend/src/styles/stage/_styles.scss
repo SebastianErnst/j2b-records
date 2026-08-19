@@ -1,0 +1,56 @@
+@use "adventure";
+@use "utils" as utils;
+@use "header/variables" as header;
+
+.stage {
+    height: calc(100svh - #{header.$menu-height});
+    width: 100%;
+    background: {
+        repeat: no-repeat;
+        position: center;
+        size: cover;
+    }
+    position: relative;
+    display: flex;
+    align-items: center;
+    &::before {
+        content: "";
+        @include utils.absolute-stretch();
+        background: {
+            image: linear-gradient(to right,
+                    rgba(black, 0.90) 10%,
+                    rgba(black, 0.85) 20%,
+                    rgba(black, 0.75) 30%,
+                    rgba(black, 0.65) 40%,
+                    transparent);
+        }
+    }
+    .content {
+        position: relative;
+        display: flex;
+        flex: {
+            direction: column;
+        }
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 66%;
+    }
+    .claim {
+        margin: {
+            bottom: var(--spacing-xlarge);
+        }
+        font: {
+            size: adventure.font-size("large");
+        }
+    }
+    .flask {
+        &::before {
+            font: {
+                size: adventure.font-size("default");
+            }
+            margin: {
+                right: var(--spacing-small);
+            }
+        }
+    }
+}

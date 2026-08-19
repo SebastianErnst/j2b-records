@@ -1,0 +1,293 @@
+@use "adventure";
+@use "../icon/variables" as icons;
+@use "../button/variables" as buttons;
+@use "../font/variables" as fonts;
+
+.audio-player {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--spacing-default);
+    grid-template-areas:
+        "media"
+        "controls"
+        "song-list"
+    ;
+    @include adventure.breakpoint("large") {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+        grid-template-areas:
+        "media song-list"
+        "media controls"
+    ;
+    }
+    audio {
+        display: none;
+    }
+    .media-wrapper {
+        position: relative;
+        aspect-ratio: 16 / 9;
+        grid-area: media;
+        width: 100%;
+        max: {
+            width: 100%;
+        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .fullscreen {
+        position: absolute;
+        bottom: var(--spacing-default);
+        right: var(--spacing-default);
+        color: adventure.color("white");
+        cursor: pointer;
+        transition: color buttons.$hover-transition-out;
+        background: unset;
+        outline: 0;
+        border: 0;
+        display: none;
+        &.is-active {
+            display: block;
+        }
+        &::before {
+            @include adventure.icon(icons.$enlarge);
+        }
+        &:hover {
+            color: adventure.color("grey");
+            transition: color buttons.$hover-transition-in;
+        }
+    }
+    video,
+    .thumbnail{
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        display: none;
+        &.is-active {
+            display: block;
+        }
+    }
+    .control-bar {
+        padding: {
+            bottom: var(--spacing-default);
+        }
+        grid-area: controls;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: {
+            wrap: wrap;
+        }
+        gap: var(--spacing-large);
+        @include adventure.breakpoint("large") {
+            gap: var(--spacing-default);
+        }
+        .button-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-medium);
+            @include adventure.breakpoint("medium") {
+                gap: var(--spacing-default);
+            }
+        }
+        .prev-song,
+        .start-stop,
+        .next-song {
+            padding: 0;
+            display: grid;
+            place-items: center;
+            background: {
+                color: adventure.color("corporate");
+            }
+            color: adventure.color("white");
+            border: {
+                width: 0;
+                radius: buttons.$border-radius;
+            }
+            aspect-ratio: 1;
+            cursor: pointer;
+            transition:
+                    color buttons.$hover-transition-out,
+                    background-color buttons.$hover-transition-out;
+            &:hover {
+                color: adventure.color("black");
+                background: {
+                    color: adventure.color("white");
+                }
+                transition:
+                        color buttons.$hover-transition-in,
+                        background-color buttons.$hover-transition-in;
+            }
+        }
+        .prev-song,
+        .next-song {
+            width: 50px;
+            font: {
+                size: 1rem;
+            }
+        }
+        .prev-song {
+            &::before {
+                @include adventure.icon(icons.$arrow-left);
+            }
+        }
+        .start-stop {
+            width: 75px;
+            font: {
+                size: 3rem;
+            }
+            &::before {
+                @include adventure.icon(icons.$play);
+            }
+            &.is-playing {
+                &::before {
+                    @include adventure.icon(icons.$pause);
+                }
+            }
+        }
+        .next-song {
+            &::before {
+                @include adventure.icon(icons.$arrow-right);
+            }
+        }
+        .progress,
+        .volume {
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            &:focus,
+            &:focus::-moz-range-thumb {
+                outline: none;
+            }
+
+        }
+        .progress {
+            width: 100%;
+            margin: 0;
+            translate: 0 -3px;
+            &::-webkit-slider-runnable-track,
+            &::-moz-range-track {
+                background-color: adventure.color("grey-light");
+                height: 4px;
+                margin: 0;
+            }
+            &::-webkit-slider-thumb,
+            &::-moz-range-thumb {
+                appearance: none;
+                margin: {
+                    top: -12px; /* Centers thumb on the track */
+                }
+                background: {
+                    color: adventure.color("corporate");;
+                }
+                width: 24px;
+                height: 12px;
+                border: {
+                    width: 0;
+                    radius: buttons.$border-radius;
+                }
+            }
+        }
+        .volume-wrapper {
+            position: relative;
+            width: 50%;
+            .volume {
+                width: 100%;
+                &::-webkit-slider-runnable-track,
+                &::-moz-range-track {
+                    background-color: adventure.color("grey-light");
+                    height: 2px;
+                }
+                &::-webkit-slider-thumb,
+                &::-moz-range-thumb {
+                    appearance: none;
+                    margin: {
+                        top: -12px;
+                    }
+                    background: {
+                        color: adventure.color("corporate");;
+                    }
+                    width: 16px;
+                    height: 16px;
+                    border: {
+                        width: 0;
+                        radius: buttons.$border-radius;
+                    }
+                }
+            }
+            &::before {
+                @include adventure.icon(icons.$volume-medium);
+                font: {
+                    size: adventure.font-size("medium");
+                }
+                position: absolute;
+                top: 0;
+                left: -10px;
+                translate: -100% -4px;
+            }
+        }
+    }
+    .song-list {
+        grid-area: song-list;
+        .song {
+            border: {
+                bottom: 1px solid adventure.color("grey");
+            }
+            display: flex;
+            cursor: pointer;
+            align-items: center;
+            padding: var(--spacing-medium);
+            @include adventure.breakpoint("large") {
+                padding: var(--spacing-default);
+            }
+            &:first-child {
+                border: {
+                    top: 1px solid adventure.color("grey");
+                }
+            }
+            transition:
+                    background-color buttons.$hover-transition-out;
+            &:hover {
+                background: {
+                    color: adventure.color("grey-dark");
+                }
+                transition:
+                        background-color buttons.$hover-transition-in;
+            }
+            &.is-active {
+                color: adventure.color("corporate");
+            }
+            .flag {
+                display: inline-block;
+                background: {
+                    color: adventure.color("corporate");
+                }
+                color: adventure.color("white");
+                padding: var(--spacing-xsmall);
+                border: {
+                    radius: buttons.$border-radius;
+                }
+                font: {
+                    weight: fonts.$font-weight-bold;
+                    size: 12px;
+                }
+                margin: {
+                    right: var(--spacing-default);
+                }
+            }
+            .dash {
+                padding: 0 var(--spacing-small);
+            }
+            .duration {
+                display: inline-block;
+                margin: {
+                    left: auto;
+                }
+                padding: {
+                    left: var(--spacing-medium);
+                }
+            }
+        }
+    }
+}

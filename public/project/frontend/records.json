@@ -10,11 +10,7 @@
       "1 main": 736,
       "2 main": 179
     },
-    "usedIds": [
-      179,
-      666,
-      736
-    ]
+    "usedIds": []
   },
   "modules": {
     "byIdentifier": {
@@ -23,9 +19,7 @@
       "./node_modules/lazysizes/lazysizes.js": 90,
       "./node_modules/lazysizes/plugins/unveilhooks/ls.unveilhooks.js": 82,
       "./node_modules/swiper/js/swiper.min.js": 999,
-      "./src/scripts/klaroConfig.js": 122,
       "./src/scripts/main.js": 630,
-      "./src/scripts/main.js|2ab62bb52c8309ae744eaf8a03e8bb73": 124,
       "./src/scripts/main.js|8d38651785a1beae729ac3b9b2aa1b97": 891,
       "./src/scripts/main.js|9665211cfe72c2954ebccbe61d16b99a": 347,
       "./src/scripts/main.js|d5950d443ca8e8b1ea2bd38360cab387": 348
@@ -33,8 +27,8 @@
     "usedIds": [
       82,
       90,
-      122,
-      124,
+      559,
+      630,
       755,
       999
     ]

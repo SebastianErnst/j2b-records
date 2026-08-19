@@ -1,0 +1,11 @@
+services:
+    web:
+        volumes:
+            # Move the huge vendor/ tree into a native Docker volume instead of the
+            # slow Windows bind mount. Source code stays bind-mounted for live editing.
+            # npm builds (assets/admin, public/project/frontend) still run from the
+            # Windows host as before, since their build scripts use Windows commands.
+            - vendor_data:/var/www/html/vendor
+
+volumes:
+    vendor_data:

@@ -27,6 +27,12 @@
 composer.lock
 symfony.lock
 
+# local database dumps
+/j2b-records-live.sql
+
+# local FTP credential for media sync
+/scripts/.ftp-credential.xml
+
 # npm
 package-lock.json
 node_modules

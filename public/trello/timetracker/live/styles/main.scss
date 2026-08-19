@@ -1,0 +1,185 @@
+@use "./icons" as icons;
+
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font: {
+        family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+    }
+    color: var(--ds-text,#172b4d);
+    button {
+        box-shadow: none;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 12px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: color 85ms ease,background-color 85ms ease;
+        background-color: var(--ds-background-neutral-subtle, #00000000);
+        color: var(--ds-text-subtle, #626f86);
+        border: 1px solid var(--ds-border, #091e4224);
+        &:hover {
+            background-color: var(--ds-background-neutral-subtle-hovered, #091e420f);
+            color: var(--ds-text, #172b4d);
+        }
+        &.icon {
+            aspect-ratio: 1;
+        }
+        &.add {
+            &::before {
+                @include icons.icon(icons.$icon-add);
+            }
+        }
+        &.remove {
+            &::before {
+                @include icons.icon(icons.$icon-remove);
+            }
+        }
+        &.play {
+            &::before {
+                @include icons.icon(icons.$icon-play);
+            }
+        }
+        &.pause {
+            &::before {
+                @include icons.icon(icons.$icon-pause);
+            }
+        }
+        &.stop {
+            &::before {
+                @include icons.icon(icons.$icon-stop);
+            }
+        }
+        &.edit {
+            &::before {
+                @include icons.icon(icons.$icon-edit);
+            }
+        }
+    }
+}
+
+.timetracker {
+    //background: {
+    //    color: var(--ds-surface-raised, #ffffff)
+    //}
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+    }
+    .total-time {
+        font-weight: 700;
+    }
+    ul {
+        border: {
+            top: 1px solid rgba(115, 133, 150, 0.75);
+            bottom: 1px solid rgba(115, 133, 150, 0.75);
+        }
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: minmax(0 ,1fr);
+        .empty-notice {
+            text-align: center;
+            font-size: 12px;
+            color: #8c9bab;
+        }
+        li {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid rgba(115, 133, 150, 0.75);
+            gap: 24px;
+            &:last-child {
+                border-bottom: none;
+            }
+            .content-wrapper {
+                display: grid;
+                grid-template-columns: min-content min-content auto;
+                gap: 12px;
+                align-items: center;
+                .member {
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                }
+            }
+
+            &:not(.is-tracking) {
+                .stop {
+                    display: none;
+                }
+            }
+            &.is-tracking {
+                background: {
+                    color: var(--ds-surface-overlay-hovered);
+                }
+                .play {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.timetracker-edit-popup {
+    background: {
+        color: transparent;
+    }
+    form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        .input-wrapper {
+            display: grid;
+            grid-template-columns: 115px 1fr;
+            gap: 4px;
+        }
+        .button-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin: {
+                top: 12px;
+            }
+            [type="submit"] {
+                color: white;
+                background: {
+                    color: var(--ds-background-accent-green-subtle);
+                }
+                &:hover {
+                    background: {
+                        color: var(--ds-background-accent-green-subtler);
+                    }
+                }
+            }
+
+            [type="button"] {
+                color: white;
+                background: {
+                    color: var(--ds-background-accent-red-subtle);
+                }
+                &:hover {
+                    background: {
+                        color: var(--ds-background-accent-red-subtler);
+                    }
+                }
+            }
+        }
+    }
+}
+
+select,
+input {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
+    text-align: right;
+    outline: 0;
+    border: 1px solid rgba(115, 133, 150, 0.75);
+}

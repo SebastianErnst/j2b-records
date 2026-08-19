@@ -1,0 +1,110 @@
+.timetracker {
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px;
+    }
+    .total-time {
+        font-weight: 700;
+    }
+    ul {
+        border: {
+            top: 1px solid rgba(115, 133, 150, 0.75);
+            bottom: 1px solid rgba(115, 133, 150, 0.75);
+        }
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: minmax(0 ,1fr);
+        .empty-notice {
+            text-align: center;
+            font-size: 12px;
+            color: #8c9bab;
+        }
+        li {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            padding: 8px;
+            border-bottom: 1px solid rgba(115, 133, 150, 0.75);
+            gap: 24px;
+            &:last-child {
+                border-bottom: none;
+            }
+            .content-wrapper {
+                display: grid;
+                grid-template-columns: min-content min-content auto;
+                gap: 12px;
+                align-items: center;
+                .member {
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 50%;
+                }
+            }
+
+            &:not(.is-tracking) {
+                .stop {
+                    display: none;
+                }
+            }
+            &.is-tracking {
+                background: {
+                    color: var(--ds-surface-overlay-hovered);
+                }
+                .play {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.timetracker-edit-popup {
+    background: {
+        color: transparent;
+    }
+    form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+        .input-wrapper {
+            display: grid;
+            grid-template-columns: 115px 1fr;
+            gap: 4px;
+        }
+        .button-wrapper {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin: {
+                top: 12px;
+            }
+            [type="submit"] {
+                color: white;
+                background: {
+                    color: var(--ds-background-accent-green-subtle);
+                }
+                &:hover {
+                    background: {
+                        color: var(--ds-background-accent-green-subtler);
+                    }
+                }
+            }
+
+            [type="button"] {
+                color: white;
+                background: {
+                    color: var(--ds-background-accent-red-subtle);
+                }
+                &:hover {
+                    background: {
+                        color: var(--ds-background-accent-red-subtler);
+                    }
+                }
+            }
+        }
+    }
+}

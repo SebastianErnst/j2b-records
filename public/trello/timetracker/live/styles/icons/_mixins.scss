@@ -1,0 +1,26 @@
+@mixin icon($name: null, $font-styles: true) {
+    content: $name;
+    @if ($font-styles) {
+        @include icon-font();
+    }
+}
+
+@function _fix-unicode($unicode) {
+    @return unquote("\"") + $unicode + unquote("\"");
+}
+
+@mixin icon-font() {
+    font: {
+        /* stylelint-disable-next-line declaration-no-important */
+        family: 'Icomoon' !important;
+        style: normal;
+        variant: normal;
+        weight: normal;
+    }
+    speak: none;
+    text: {
+        transform: none;
+    }
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

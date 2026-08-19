@@ -1,0 +1,54 @@
+@use "../icons" as icons;
+
+button {
+    box-shadow: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 85ms ease,background-color 85ms ease;
+    background-color: var(--ds-background-neutral-subtle, #00000000);
+    color: var(--ds-text-subtle, #626f86);
+    border: 1px solid var(--ds-border, #091e4224);
+    &:hover {
+        background-color: var(--ds-background-neutral-subtle-hovered, #091e420f);
+        color: var(--ds-text, #172b4d);
+    }
+    &.icon {
+        aspect-ratio: 1;
+    }
+    &.add {
+        &::before {
+            @include icons.icon(icons.$icon-add);
+        }
+    }
+    &.remove {
+        &::before {
+            @include icons.icon(icons.$icon-remove);
+        }
+    }
+    &.play {
+        &::before {
+            @include icons.icon(icons.$icon-play);
+        }
+    }
+    &.pause {
+        &::before {
+            @include icons.icon(icons.$icon-pause);
+        }
+    }
+    &.stop {
+        &::before {
+            @include icons.icon(icons.$icon-stop);
+        }
+    }
+    &.edit {
+        &::before {
+            @include icons.icon(icons.$icon-edit);
+        }
+    }
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>J2B Records Extension</title>
+    <script src="https://p.trellocdn.com/power-up.min.js"></script>
+    <script type="module" src="../../build/runtime.js"></script>
+    <script type="module" src="../../build/vendor.js"></script>
+    <script type="module" src="../../build/main.js"></script>
+    <link rel="stylesheet" href="../../build/main.css"/>
+</head>
+<body data-module="index" data-trello-power-up-iframe class="timetracker-edit-popup">
+<form action="/">
+    <div class="input-wrapper">
+        <label for="time">Zeit:</label>
+        <input data-time=""type="time" id="time" value="00:00:00"/>
+    </div>
+    <div class="input-wrapper">
+        <label for="member">Mitglied:</label>
+        <select data-member="" id="member"></select>
+    </div>
+    <div class="input-wrapper">
+        <label for="description">Beschreibung:</label>
+        <select data-description="" type="text" id="description"></select>
+    </div>
+    <div class="button-wrapper">
+        <button data-submit="" type="submit" id="submit">Speichern</button>
+        <button data-abort="" type="button" id="abandon">Abbrechen</button>
+    </div>
+</form>
+</body>
+</html>

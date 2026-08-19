@@ -1,0 +1,15 @@
+{
+    "name": "Mein Power-Up",
+    "description": "Ein Test-Power-Up",
+    "author": "Dein Name",
+    "capabilities": {
+        "board-buttons": {
+            "position": "top",
+            "callback": "boardButtonsCallback"
+        }
+    },
+    "url": "https://j2b-records.de/trello/index.html",
+    "icon": {
+        "url": "https://j2b-records.de/project/frontend/build/logo.jpg"
+    }
+}

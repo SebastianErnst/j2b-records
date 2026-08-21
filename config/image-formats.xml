@@ -5,12 +5,12 @@
 
     <!-- See: http://docs.sulu.io/en/latest/book/image-formats.html how to define image-formats -->
 
-    <format key="300x">
+    <format key="frontend-gallery-800x">
         <meta>
-            <title lang="en">Small thumbnail</title>
-            <title lang="de">Kleines Vorschaubild</title>
+            <title lang="en">Gallery thumbnail</title>
+            <title lang="de">Galerie-Vorschaubild</title>
         </meta>
-        <scale x="300"/>
+        <scale x="800" y="800" mode="outbound"/>
         <options>
             <option name="jpeg_quality">80</option>
             <option name="webp_quality">80</option>

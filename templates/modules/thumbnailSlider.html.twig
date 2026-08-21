@@ -23,7 +23,7 @@
                     {% for thumbnailSliderItem in content.thumbnailSliderItems %}
                         <li class="">
                             <div class="background-image"
-                                 style="background-image: url('{{ thumbnailSliderItem.thumbnailSliderItemImage.thumbnails['300x']|default(thumbnailSliderItem.thumbnailSliderItemImage.url) }}')"></div>
+                                 style="background-image: url('{{ thumbnailSliderItem.thumbnailSliderItemImage.thumbnails['frontend-gallery-800x']|default(thumbnailSliderItem.thumbnailSliderItemImage.url) }}')"></div>
                             <span class="h2">{{ thumbnailSliderItem.thumbnailSliderItemTitle }}</span>
                         </li>
                     {% endfor %}

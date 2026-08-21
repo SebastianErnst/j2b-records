@@ -9,7 +9,7 @@
 					{% set image = imageGalleryItem.imageGalleryItemImage %}
 					{% if image %}
 						<a data-image-gallery-item="" href="{{ image.thumbnails['frontend-stage-1920x']|default(image.url) }}" data-sub-html="{% if imageGalleryItem.imageGalleryItemTitle %}<h3>{{ imageGalleryItem.imageGalleryItemTitle|e }}</h3>{% endif %}">
-							<img src="{{ image.thumbnails['300x']|default(image.url) }}" alt="{{ imageGalleryItem.imageGalleryItemTitle|default(image.title)|e }}" loading="lazy">
+							<img src="{{ image.thumbnails['frontend-gallery-800x']|default(image.url) }}" alt="{{ imageGalleryItem.imageGalleryItemTitle|default(image.title)|e }}" loading="lazy">
 						</a>
 					{% endif %}
 				{% endfor %}

@@ -16,8 +16,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="{{ asset('/project/frontend/build/vendor.css') }}" />
-        <link rel="stylesheet" href="{{ asset('/project/frontend/build/main.css') }}" />
+        <link rel="preload" href="{{ asset('/project/frontend/build/vendor.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="preload" href="{{ asset('/project/frontend/build/main.css') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript>
+            <link rel="stylesheet" href="{{ asset('/project/frontend/build/vendor.css') }}">
+            <link rel="stylesheet" href="{{ asset('/project/frontend/build/main.css') }}">
+        </noscript>
         <link rel="icon" href="/favicon.svg">
 
         <script src="{{ asset('/project/frontend/build/runtime.js') }}" defer></script>

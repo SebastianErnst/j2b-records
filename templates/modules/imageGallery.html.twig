@@ -1,22 +1,19 @@
 {% if content.imageGalleryItems is defined and content.imageGalleryItems|length > 0 %}
-    <section class="image-gallery section-wrapper">
-        {% if content.imageGalleryHeadline is defined and content.imageGalleryHeadline %}
-            <h2 class="h2 image-gallery__headline">{{ content.imageGalleryHeadline }}</h2>
-        {% endif %}
-        <div class="image-gallery__grid" data-image-gallery>
-            {% for imageGalleryItem in content.imageGalleryItems %}
-                {% set image = imageGalleryItem.imageGalleryItemImage %}
-                {% if image %}
-                    <a class="image-gallery__item"
-                       href="{{ image.url }}"
-                       data-sub-html="{% if imageGalleryItem.imageGalleryItemTitle %}<h3>{{ imageGalleryItem.imageGalleryItemTitle|e }}</h3>{% endif %}">
-                        <img class="image-gallery__image"
-                             src="{{ image.thumbnails['300x']|default(image.url) }}"
-                             alt="{{ imageGalleryItem.imageGalleryItemTitle|default(image.title)|e }}"
-                             loading="lazy">
-                    </a>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </section>
+	{# <section class="image-gallery-section">
+		<div class="section-wrapper"> #}
+			{# {% if content.imageGalleryHeadline is defined and content.imageGalleryHeadline %}
+				<h2 class="h2 headline">{{ content.imageGalleryHeadline }}</h2>
+			{% endif %} #}
+			<ul class="image-gallery" data-image-gallery="">
+				{% for imageGalleryItem in content.imageGalleryItems %}
+					{% set image = imageGalleryItem.imageGalleryItemImage %}
+					{% if image %}
+						<a data-image-gallery-item="" href="{{ image.url }}" data-sub-html="{% if imageGalleryItem.imageGalleryItemTitle %}<h3>{{ imageGalleryItem.imageGalleryItemTitle|e }}</h3>{% endif %}">
+							<img src="{{ image.thumbnails['300x']|default(image.url) }}" alt="{{ imageGalleryItem.imageGalleryItemTitle|default(image.title)|e }}" loading="lazy">
+						</a>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		{# </div>
+	</section> #}
 {% endif %}

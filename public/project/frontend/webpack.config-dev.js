@@ -12,7 +12,7 @@ module.exports = {
         path: path.resolve(__dirname, './build'),
         filename: '[name].js',
         libraryTarget: 'umd',
-        publicPath: '/build/'
+        publicPath: '/project/frontend/build/'
     },
     optimization: {
         runtimeChunk: 'single',

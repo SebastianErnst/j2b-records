@@ -837,7 +837,7 @@ button.swiper-pagination-bullet {
   transition: background-color 0.15s ease-out;
 }
 .audio-player .song-list .song:hover {
-  background-color: #0c0c0c;
+  background-color: #181818;
   transition: background-color 0.3s ease-out;
 }
 .audio-player .song-list .song.is-active {
@@ -875,7 +875,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: black;
+  background: #181818;
 }
 html footer,
 body footer {
@@ -1533,6 +1533,28 @@ header .highlight a.is-active {
 
 img {
   display: inherit;
+}
+
+.image-gallery {
+  margin-block-start: var(--spacing-xlarge);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-large);
+  padding: 0;
+}
+.image-gallery > a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1/1;
+}
+.image-gallery > a > img {
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+.image-gallery > a:hover > img {
+  transform: scale(1.05);
 }
 
 a {

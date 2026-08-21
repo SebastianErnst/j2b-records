@@ -3,7 +3,7 @@
   \************************************************************/
 @font-face {
   font-family: "lg";
-  src: url(/build/64b800aa30714fd916dc.woff2?io9a6k) format("woff2"), url(/build/747d038541bfc6bb8ea9.ttf?io9a6k) format("truetype"), url(/build/356a0e9cb064c7a196c6.woff?io9a6k) format("woff"), url(/build/09cd8e9be7081f216644.svg?io9a6k#lg) format("svg");
+  src: url(/project/frontend/build/64b800aa30714fd916dc.woff2?io9a6k) format("woff2"), url(/project/frontend/build/747d038541bfc6bb8ea9.ttf?io9a6k) format("truetype"), url(/project/frontend/build/356a0e9cb064c7a196c6.woff?io9a6k) format("woff"), url(/project/frontend/build/09cd8e9be7081f216644.svg?io9a6k#lg) format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -459,7 +459,7 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item:not(.lg-zoomable).lg-co
   display: none !important;
 }
 .lg-outer .lg-item:not(.lg-start-end-progress) {
-  background: url(/build/fcba57cdb89652f9bb54.gif) no-repeat scroll center center transparent;
+  background: url(/project/frontend/build/fcba57cdb89652f9bb54.gif) no-repeat scroll center center transparent;
 }
 .lg-outer.lg-css3 .lg-prev-slide,
 .lg-outer.lg-css3 .lg-current,

@@ -1,0 +1,25 @@
+.image-gallery {
+    margin: {
+        block: {
+            start: var(--spacing-xlarge);
+        }
+    }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-large);
+    padding: 0;
+    > a {
+        display: block;
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 1 / 1;
+        > img {
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+        &:hover > img {
+            transform: scale(1.05);
+        }
+    }
+}

@@ -54,10 +54,9 @@ class Application {
     initImageGalleries() {
         document.querySelectorAll('[data-image-gallery]').forEach((gallery) => {
             lightGallery(gallery, {
-                plugins: [lgThumbnail],
-                selector: '.image-gallery__item',
-                download: false,
-                thumbnail: true,
+                plugins: [],
+                selector: '[data-image-gallery-item]',
+                download: false
             });
         });
     }

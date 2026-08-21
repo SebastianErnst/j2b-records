@@ -1,4 +1,5 @@
 @use "header/variables" as header;
+@use "adventure";
 
 *,
 *::before,
@@ -15,7 +16,7 @@ body {
     flex: {
         direction: column;
     }
-    background: black;
+    background: adventure.color("grey-dark");
     footer {
         margin-top: auto;
     }

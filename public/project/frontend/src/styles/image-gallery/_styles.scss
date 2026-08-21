@@ -1,11 +1,11 @@
 .image-gallery {
     margin: {
         block: {
-            start: var(--spacing-xlarge);
+            start: var(--spacing-large);
         }
     }
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: var(--spacing-large);
     padding: 0;
     > a {

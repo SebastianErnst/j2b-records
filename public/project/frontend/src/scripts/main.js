@@ -1,3 +1,4 @@
+import './klaroConfig';
 import lazySizes from 'lazysizes';
 import "lazysizes/plugins/unveilhooks/ls.unveilhooks";
 import ThumbnailSlider from "./ThumbnailSlider/ThumbnailSlider";
@@ -19,6 +20,15 @@ class Application {
         this.initAudioPlayer();
         this.initImageGalleries();
         this.initYoutubePlaylists();
+        this.initCookieSettings();
+    }
+
+    initCookieSettings() {
+        document.querySelectorAll('[data-klaro-show]').forEach((button) => {
+            button.addEventListener('click', () => {
+                window.klaro && window.klaro.show();
+            });
+        });
     }
 
     initMainNav() {

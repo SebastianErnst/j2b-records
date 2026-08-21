@@ -10,15 +10,6 @@
     @include adventure.breakpoint("large") {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
-    [data-type="placeholder"] {
-        align-self: flex-start;
-
-        .cm-buttons {
-            display: none !important;
-        }
-    }
-
     audio {
         display: none;
     }

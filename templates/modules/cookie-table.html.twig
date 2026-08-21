@@ -1,0 +1,33 @@
+{# Keep this table in sync with public/project/frontend/src/scripts/klaroConfig.js #}
+<section class="section cookie-table">
+    <div class="section-wrapper">
+        <h2>{{ 'cookie-overview-title' | trans }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>{{ 'cookie-table-service' | trans }}</th>
+                    <th>{{ 'cookie-table-purpose' | trans }}</th>
+                    <th>{{ 'cookie-table-cookies' | trans }}</th>
+                    <th>{{ 'cookie-table-provider' | trans }}</th>
+                    <th>{{ 'cookie-table-duration' | trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Google Tag Manager</td>
+                    <td>{{ 'cookie-table-purpose-analytics' | trans }}</td>
+                    <td>_ga, _gid, _gat</td>
+                    <td>Google Ireland Limited</td>
+                    <td>{{ 'cookie-table-duration-gtm' | trans }}</td>
+                </tr>
+                <tr>
+                    <td>YouTube</td>
+                    <td>{{ 'cookie-table-purpose-marketing' | trans }}</td>
+                    <td>VISITOR_INFO1_LIVE, YSC, CONSENT, PREF</td>
+                    <td>Google Ireland Limited</td>
+                    <td>{{ 'cookie-table-duration-youtube' | trans }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

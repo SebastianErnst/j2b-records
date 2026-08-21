@@ -1,0 +1,31 @@
+@use "adventure";
+@use "font/variables" as fonts;
+
+.cookie-table {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: {
+            top: var(--spacing-medium);
+        }
+        font: {
+            size: adventure.font-size("small");
+        }
+    }
+    th,
+    td {
+        text-align: left;
+        padding: {
+            top: var(--spacing-small);
+            right: var(--spacing-small);
+            bottom: var(--spacing-small);
+            left: var(--spacing-small);
+        }
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    th {
+        font: {
+            weight: fonts.$font-weight-bold;
+        }
+    }
+}

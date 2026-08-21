@@ -2,4 +2,7 @@
 {% block content %}
     {% include 'modules/stage.html.twig' %}
     {% include 'modules/article.html.twig' %}
+    {% if app.request.getPathInfo() == '/datenschutz' %}
+        {% include 'modules/cookie-table.html.twig' %}
+    {% endif %}
 {% endblock %}

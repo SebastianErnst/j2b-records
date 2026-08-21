@@ -1,6 +1,8 @@
 @use "adventure";
 @use "list/mixins" as list;
 @use "font/variables" as fonts;
+@use "link/variables" as link;
+@use "button/variables" as button;
 
 .footer {
     padding: {
@@ -18,5 +20,19 @@
         }
         display: flex;
         gap: var(--spacing-large);
+
+        button {
+            background: none;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            color: link.$color;
+            transition: color button.$hover-transition-out;
+            &:hover {
+                transition: color button.$hover-transition-in;
+                color: link.$hover-color;
+            }
+        }
     }
 }

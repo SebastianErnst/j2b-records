@@ -24,7 +24,6 @@
 
 # composer
 /composer.phar
-composer.lock
 symfony.lock
 
 # local database dumps

@@ -1,0 +1,48 @@
+{% if content.audioPlayerItems is defined and content.audioPlayerItems|length > 0 %}
+    <section class="audio-player-section" id="audio-player">
+        <div class="section-wrapper">
+            {% if content.audioPlayerHeadline is defined and content.audioPlayerHeadline %}
+                <h2 class="h2 headline">{{ content.audioPlayerHeadline }}</h2>
+            {% endif %}
+            <div class="audio-player" data-audio-player="">
+                <div class="media-wrapper">
+                    <audio></audio>
+                    <video></video>
+                    <img class="thumbnail" data-thumbnail="" src="" alt="">
+                    <button type="button" class="fullscreen" data-fullscreen=""></button>
+                </div>
+                <div class="control-bar">
+                    <div class="button-wrapper">
+                        <button type="button" class="prev-song" data-prev-song=""></button>
+                        <button type="button" class="start-stop" data-start-stop=""></button>
+                        <button type="button" class="next-song" data-next-song=""></button>
+                    </div>
+                    <input type="range" class="progress" data-progress="" min="0" max="100" value="0">
+                    <div class="volume-wrapper">
+                        <input type="range" class="volume" data-volume="" min="0" max="100" value="100">
+                    </div>
+                </div>
+                <ul class="song-list" data-song-list="">
+                    {% for audioPlayerItem in content.audioPlayerItems %}
+                        {% set media = audioPlayerItem.audioPlayerItemMedia %}
+                        {% set coverArt = audioPlayerItem.audioPlayerItemCoverArt %}
+                        {% if media %}
+                            <li class="song{% if loop.first %} is-active{% endif %}"
+                                data-song=""
+                                data-title="{{ audioPlayerItem.audioPlayerItemTitle|e }}"
+                                data-artist="{{ audioPlayerItem.audioPlayerItemArtist|e }}"
+                                data-url="{{ media.url }}"
+                                data-cover-art="{{ coverArt ? coverArt.url : '' }}"
+                                data-type="{{ audioPlayerItem.audioPlayerItemType|default('audio') }}"
+                            >
+                                <span class="artist">{{ audioPlayerItem.audioPlayerItemArtist }}</span>
+                                <span class="dash">-</span>
+                                <span class="title">{{ audioPlayerItem.audioPlayerItemTitle }}</span>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endif %}

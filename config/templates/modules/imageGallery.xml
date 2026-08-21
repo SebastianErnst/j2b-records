@@ -14,7 +14,7 @@
                 <title lang="de">Titel</title>
             </meta>
         </property>
-        <block name="imageGalleryItems" default-type="imageGalleryItem" minOccurs="1">
+        <block name="imageGalleryItems" default-type="imageGalleryItem" minOccurs="0">
             <params>
                 <param name="add_button_text">
                     <meta>

@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<section name="audioPlayer"
+         xmlns="http://schemas.sulu.io/template/template"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://schemas.sulu.io/template/template http://schemas.sulu.io/template/template-1.0.xsd">
+    <meta>
+        <title lang="en">Audio player</title>
+        <title lang="de">Audioplayer</title>
+    </meta>
+    <properties>
+        <property name="audioPlayerHeadline" type="text_line">
+            <meta>
+                <title lang="en">Title</title>
+                <title lang="de">Titel</title>
+            </meta>
+        </property>
+        <block name="audioPlayerItems" default-type="audioPlayerItem" minOccurs="0">
+            <params>
+                <param name="add_button_text">
+                    <meta>
+                        <title lang="en">Add song</title>
+                        <title lang="de">Song hinzufügen</title>
+                    </meta>
+                </param>
+            </params>
+            <types>
+                <type name="audioPlayerItem">
+                    <properties>
+                        <property name="audioPlayerItemTitle" type="text_line" mandatory="true">
+                            <meta>
+                                <title lang="en">Title</title>
+                                <title lang="de">Titel</title>
+                            </meta>
+                        </property>
+
+                        <property name="audioPlayerItemArtist" type="text_line" mandatory="true">
+                            <meta>
+                                <title lang="en">Artist</title>
+                                <title lang="de">Künstler</title>
+                            </meta>
+                        </property>
+
+                        <property name="audioPlayerItemType" type="single_select" mandatory="true">
+                            <meta>
+                                <title lang="en">Type</title>
+                                <title lang="de">Typ</title>
+                            </meta>
+
+                            <params>
+                                <param name="default_value" value="audio"/>
+
+                                <param name="values" type="collection">
+                                    <param name="audio">
+                                        <meta>
+                                            <title lang="en">Audio</title>
+                                            <title lang="de">Audio</title>
+                                        </meta>
+                                    </param>
+
+                                    <param name="video">
+                                        <meta>
+                                            <title lang="en">Video</title>
+                                            <title lang="de">Video</title>
+                                        </meta>
+                                    </param>
+                                </param>
+                            </params>
+                        </property>
+
+                        <property name="audioPlayerItemMedia" type="single_media_selection" mandatory="true">
+                            <meta>
+                                <title lang="en">Audio/Video file</title>
+                                <title lang="de">Audio-/Videodatei</title>
+                            </meta>
+                            <params>
+                                <param name="types" value="audio,video"/>
+                            </params>
+                        </property>
+
+                        <property name="audioPlayerItemCoverArt" type="single_media_selection" mandatory="true">
+                            <meta>
+                                <title lang="en">Cover image</title>
+                                <title lang="de">Coverbild</title>
+                            </meta>
+                            <params>
+                                <param name="types" value="image"/>
+                            </params>
+                        </property>
+                    </properties>
+                </type>
+            </types>
+        </block>
+    </properties>
+</section>

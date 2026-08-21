@@ -61,6 +61,8 @@
 
         <xi:include href="../modules/references.xml" />
 
+        <xi:include href="../modules/audioPlayer.xml" />
+
         <xi:include href="../modules/contentSection.xml" />
 
         <xi:include href="../modules/form.xml" />

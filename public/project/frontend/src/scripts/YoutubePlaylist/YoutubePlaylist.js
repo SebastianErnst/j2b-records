@@ -19,7 +19,7 @@ export default class YoutubePlaylist {
         if (manager) {
             manager.watch({
                 update: (_manager, eventType, consents) => {
-                    if (eventType === 'consents' && consents.youtube && !iframe.src) {
+                    if (eventType === 'consents' && consents.youtube && !iframe.getAttribute('src')) {
                         const activeSong = node.querySelector('li.is-active');
                         if (activeSong) {
                             loadIframe(activeSong.getAttribute('data-youtube-embed-url'));

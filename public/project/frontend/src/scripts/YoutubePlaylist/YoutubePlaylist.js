@@ -13,14 +13,19 @@ export default class YoutubePlaylist {
 
         loadIframe(iframe.getAttribute('data-src'));
 
-        if (window.klaro) {
-            window.klaro.addEventListener('consents', (consents) => {
-                if (consents.youtube && !iframe.src) {
-                    const activeSong = node.querySelector('li.is-active');
-                    if (activeSong) {
-                        loadIframe(activeSong.getAttribute('data-youtube-embed-url'));
+        // Klaro's global addEventListener() only fires for 'render'/'apiConfigsLoaded'/'apiConfigsFailed';
+        // consent changes are only reported via the manager's watch() API.
+        const manager = window.klaro && window.klaro.getManager();
+        if (manager) {
+            manager.watch({
+                update: (_manager, eventType, consents) => {
+                    if (eventType === 'consents' && consents.youtube && !iframe.src) {
+                        const activeSong = node.querySelector('li.is-active');
+                        if (activeSong) {
+                            loadIframe(activeSong.getAttribute('data-youtube-embed-url'));
+                        }
                     }
-                }
+                },
             });
         }
 

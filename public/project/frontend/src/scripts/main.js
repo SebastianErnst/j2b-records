@@ -4,6 +4,10 @@ import ThumbnailSlider from "./ThumbnailSlider/ThumbnailSlider";
 import MainNav from "./MainNav/MainNav";
 import ArrowSlider from "./ArrowSlider/ArrowSlider";
 import AudioPlayer from "./AudioPlayer/AudioPlayer";
+import lightGallery from 'lightgallery';
+import lgThumbnail from 'lightgallery/plugins/thumbnail';
+import 'lightgallery/css/lightgallery.css';
+import 'lightgallery/css/lg-thumbnail.css';
 class Application {
     constructor() {
 
@@ -11,6 +15,7 @@ class Application {
         this.initArrowSlider();
         this.initMainNav();
         this.initAudioPlayer();
+        this.initImageGalleries();
     }
 
     initMainNav() {
@@ -43,6 +48,17 @@ class Application {
         audioPlayerWrappers.forEach((audioPlayerWrapper) => {
             const audioPlayer = new AudioPlayer(audioPlayerWrapper);
             audioPlayer.init();
+        });
+    }
+
+    initImageGalleries() {
+        document.querySelectorAll('[data-image-gallery]').forEach((gallery) => {
+            lightGallery(gallery, {
+                plugins: [lgThumbnail],
+                selector: '.image-gallery__item',
+                download: false,
+                thumbnail: true,
+            });
         });
     }
 }

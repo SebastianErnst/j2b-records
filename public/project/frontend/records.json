@@ -20,16 +20,31 @@
       "./node_modules/lazysizes/plugins/unveilhooks/ls.unveilhooks.js": 82,
       "./node_modules/swiper/js/swiper.min.js": 999,
       "./src/scripts/main.js": 630,
+      "./src/scripts/main.js|12c948aa3acd16d5406bd7fb5537071b": 529,
       "./src/scripts/main.js|8d38651785a1beae729ac3b9b2aa1b97": 891,
       "./src/scripts/main.js|9665211cfe72c2954ebccbe61d16b99a": 347,
-      "./src/scripts/main.js|d5950d443ca8e8b1ea2bd38360cab387": 348
+      "./src/scripts/main.js|d5950d443ca8e8b1ea2bd38360cab387": 348,
+      "asset/resource|./node_modules/lightgallery/fonts/lg.svg?io9a6k#lg": 585,
+      "asset/resource|./node_modules/lightgallery/fonts/lg.ttf?io9a6k": 603,
+      "asset/resource|./node_modules/lightgallery/fonts/lg.woff2?io9a6k": 245,
+      "asset/resource|./node_modules/lightgallery/fonts/lg.woff?io9a6k": 333,
+      "asset/resource|./node_modules/lightgallery/images/loading.gif": 888,
+      "css/auto|./node_modules/lightgallery/css/lg-thumbnail.css": 638,
+      "css/auto|./node_modules/lightgallery/css/lightgallery.css": 36
     },
     "usedIds": [
+      36,
       82,
       90,
+      245,
+      333,
       559,
+      585,
+      603,
       630,
+      638,
       755,
+      888,
       999
     ]
   }

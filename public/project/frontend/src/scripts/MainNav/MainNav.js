@@ -15,8 +15,15 @@ export default class MainNav {
 
         $mainNavItems.forEach(($mainNavItem) => {
             $mainNavItem.addEventListener('click', (e) => {
-                e.preventDefault();
                 const identifier = e.target.href.split('#')[1];
+                if (!identifier) {
+                    // regular link (e.g. "Home" on subpages) - let the browser navigate normally
+                    node.classList.remove('is-active');
+                    burger.classList.remove('is-active');
+                    return;
+                }
+
+                e.preventDefault();
                 const $target = document.getElementById(identifier);
                 if ($target === null) {
                     console.log(`No Section with the identifier: ${identifier}found`);

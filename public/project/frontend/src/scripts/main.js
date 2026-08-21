@@ -8,6 +8,8 @@ import lightGallery from 'lightgallery';
 import lgThumbnail from 'lightgallery/plugins/thumbnail';
 import 'lightgallery/css/lightgallery.css';
 import 'lightgallery/css/lg-thumbnail.css';
+import YoutubePlaylist from './YoutubePlaylist/YoutubePlaylist';
+
 class Application {
     constructor() {
 
@@ -16,6 +18,7 @@ class Application {
         this.initMainNav();
         this.initAudioPlayer();
         this.initImageGalleries();
+        this.initYoutubePlaylists();
     }
 
     initMainNav() {
@@ -48,6 +51,14 @@ class Application {
         audioPlayerWrappers.forEach((audioPlayerWrapper) => {
             const audioPlayer = new AudioPlayer(audioPlayerWrapper);
             audioPlayer.init();
+        });
+    }
+
+    initYoutubePlaylists() {
+        const youtubePlaylists = document.querySelectorAll('[data-youtube-playlist]');
+
+        youtubePlaylists.forEach((youtubePlaylist) => {
+            new YoutubePlaylist(youtubePlaylist);
         });
     }
 

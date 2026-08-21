@@ -23,7 +23,10 @@ jobs:
           coverage: none
 
       - name: Install PHP dependencies
-        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+        # --no-scripts: composer.json's auto-scripts (cache:clear, sulu:media:init, ...)
+        # need APP_ENV=prod and a reachable database, neither of which exist on this
+        # runner yet. Cache/assets are instead built lazily on the first real request.
+        run: composer install --no-dev --no-scripts --optimize-autoloader --no-interaction --no-progress
 
       - name: Setup Node
         uses: actions/setup-node@v4

@@ -33,7 +33,6 @@ symfony.lock
 /scripts/.ftp-credential.xml
 
 # npm
-package-lock.json
 node_modules
 
 # phpcs

@@ -39,11 +39,10 @@ jobs:
           npm ci
           npm run build
 
-      - name: Build admin frontend
-        working-directory: assets/admin
-        run: |
-          npm ci
-          npm run build
+      # The admin UI (assets/admin) uses a legacy toolchain that requires npm <7
+      # (see assets/admin/.npmrc) and isn't reproducible on current CI runners.
+      # Its build output is pre-built and committed under public/build/admin,
+      # so it's deployed as-is together with the rest of the repository.
 
       # Real secrets never live in the repo. This file only exists on the
       # runner's temporary workspace and is uploaded straight to the server,

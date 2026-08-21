@@ -4,14 +4,87 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch: {}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: production
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Test deployment
-        run: echo "Deploy läuft"
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+          extensions: ctype, iconv, mbstring, pdo_mysql, gd, intl, zip
+          coverage: none
+
+      - name: Install PHP dependencies
+        run: composer install --no-dev --optimize-autoloader --no-interaction --no-progress
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Build website frontend
+        working-directory: public/project/frontend
+        run: |
+          npm ci
+          npm run build
+
+      - name: Build admin frontend
+        working-directory: assets/admin
+        run: |
+          npm ci
+          npm run build
+
+      # Real secrets never live in the repo. This file only exists on the
+      # runner's temporary workspace and is uploaded straight to the server,
+      # it is never committed.
+      - name: Write production environment file
+        run: |
+          cat > .env.local <<EOF
+          APP_ENV=prod
+          APP_DEBUG=0
+          APP_URL=${{ secrets.APP_URL }}
+          APP_SECRET=${{ secrets.APP_SECRET }}
+          DATABASE_URL=${{ secrets.DATABASE_URL }}
+          MAILER_DSN=${{ secrets.MAILER_DSN }}
+          SULU_ADMIN_EMAIL=${{ secrets.SULU_ADMIN_EMAIL }}
+          DEPLOY_CACHE_CLEAR_TOKEN=${{ secrets.DEPLOY_CACHE_CLEAR_TOKEN }}
+          EOF
+
+      # Shared hosting has no SSH, so var/cache/prod can't be cleared remotely
+      # via bin/console. It is left untouched by the FTP sync (see excludes
+      # below) and instead cleared via the public/deploy-cache-clear.php hook.
+      - name: Deploy via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/.ddev/**
+            **/.vscode/**
+            **/node_modules/**
+            **/tests/**
+            **/var/**
+            **/public/bundles/**
+            **/public/uploads/**
+            **/docker-compose*.yml
+            **/phpunit.xml.dist
+
+      - name: Clear production cache
+        run: |
+          curl -fsS "${{ secrets.APP_URL }}/deploy-cache-clear.php?token=${{ secrets.DEPLOY_CACHE_CLEAR_TOKEN }}"

@@ -2,6 +2,16 @@
 <html lang="{{ app.request.locale|split('_')[0] }}">
     <head>
 {#        <script defer src="https://api.kiprotect.com/v1/privacy-managers/8a41ca91e6e2921e1f566f724b10f9b7/klaro.js"></script>#}
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-JDV9FRXSMK"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-JDV9FRXSMK');
+        </script>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">

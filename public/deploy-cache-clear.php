@@ -36,7 +36,9 @@ function rrmdir(string $dir): void
     \rmdir($dir);
 }
 
-rrmdir(__DIR__ . '/../var/cache/prod');
+// SuluKernel splits caches per context (var/cache/admin/prod, var/cache/website/prod,
+// var/cache/common/prod), not var/cache/prod - clear the whole cache dir to catch all of them.
+rrmdir(__DIR__ . '/../var/cache');
 
 header('Content-Type: text/plain');
 echo "ok\n";

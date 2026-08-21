@@ -6,9 +6,7 @@
         <ul class="services">
     {% endif %}
     <li>
-
         <div class="background-image lazyload" {% if servicesItem.servicesItemImage is not null %}data-bg="{{ servicesItem.servicesItemImage.url }}"{% endif %}></div>
-        <div class="shadow-layer"></div>
         <div class="content">
             <h3 class="h3">{{ servicesItem.servicesItemTitle }}</h3>
             <p>{{ servicesItem.servicesItemText|raw }}</p>

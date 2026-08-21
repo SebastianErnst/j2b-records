@@ -1,5 +1,6 @@
 @use "adventure";
 @use "utils" as utils;
+@use "../font/variables" as font;
 @use "header/variables" as header;
 
 .stage-homepage {
@@ -24,11 +25,11 @@
         content: "";
         @include utils.absolute-stretch();
         background: {
-            image: linear-gradient(to right,
-                    rgba(black, 0.90) 10%,
-                    rgba(black, 0.85) 20%,
-                    rgba(black, 0.75) 30%,
-                    rgba(black, 0.65) 40%,
+            image: linear-gradient(to right,                   
+                    rgba(black, 0.75) 20%,
+                    rgba(black, 0.5) 40%,
+                    rgba(black, .25) 60%,
+
                     transparent);
         }
     }
@@ -48,16 +49,8 @@
         }
         font: {
             size: adventure.font-size("large");
+            weight: font.$font-weight-bold;
         }
-    }
-    .flask {
-        &::before {
-            font: {
-                size: adventure.font-size("default");
-            }
-            margin: {
-                right: var(--spacing-small);
-            }
-        }
+        @include utils.text-shadow();
     }
 }

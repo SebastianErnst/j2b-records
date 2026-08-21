@@ -1,4 +1,4 @@
-<section id="home" class="section stage-homepage lazyload" {% if content.headerImage is not null %}data-bg="{{ content.headerImage.url }}"{% endif %}>
+<section id="home" class="section stage-homepage lazyload" {% if content.headerImage is not null %}data-bg="{{ content.headerImage.thumbnails['frontend-stage-1920x']|default(content.headerImage.url) }}"{% endif %}>
     <div class="section-wrapper">
         <div class="content">
             <h1 class="h1">{{ content.title }}</h1>

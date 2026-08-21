@@ -3,7 +3,7 @@
         <h2 class="h2">{{ content.contentSectionHeadline }}</h2>
         <div class="about-us">
             <div class="image">
-                <img class="lazyload" data-src="{{ content.contentSectionImage.url }}" alt="">
+                <img class="lazyload" data-src="{{ content.contentSectionImage.thumbnails['frontend-content-960x']|default(content.contentSectionImage.url) }}" alt="">
             </div>
             <div class="text">
                 {{ content.contentSectionText|raw }}

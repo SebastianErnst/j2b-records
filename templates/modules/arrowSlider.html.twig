@@ -7,7 +7,7 @@
             <div class="swiper-wrapper">
         {% endif %}
         <div class="swiper-slide swiper-slide-active"
-             style="background-image: url('{{ arrowSliderItem.arrowSliderItemImage.url }}')">
+             style="background-image: url('{{ arrowSliderItem.arrowSliderItemImage.thumbnails['frontend-slider-1600x']|default(arrowSliderItem.arrowSliderItemImage.url) }}')">
             <div class="shadow-layer"></div>
             <div class="content">
                 <span class="flag">{{ arrowSliderItem.arrowSliderItemFeatureLabel }}</span>

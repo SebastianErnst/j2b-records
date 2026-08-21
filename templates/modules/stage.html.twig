@@ -1,4 +1,4 @@
-<section class="section stage" {% if content.headerImage is not null %}data-bg="{{ content.headerImage.url }}"{% endif %}>
+<section class="section stage" {% if content.headerImage is not null %}data-bg="{{ content.headerImage.thumbnails['frontend-stage-1920x']|default(content.headerImage.url) }}"{% endif %}>
     <div class="section-wrapper">
         <h1 class="h1">{{ content.title }}</h1>
         {% if content.subTitle is not empty %}

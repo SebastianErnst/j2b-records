@@ -19,7 +19,8 @@
         style: normal;
         display: swap;
     }
-    src: url("Roboto-Light.ttf") format("truetype");
+    src: url("Roboto-Light.woff2") format("woff2"),
+    url("Roboto-Light.ttf") format("truetype");
 }
 
 @font-face {
@@ -29,7 +30,8 @@
         style: normal;
         display: swap;
     }
-    src: url("Roboto-Regular.ttf") format("truetype");
+    src: url("Roboto-Regular.woff2") format("woff2"),
+    url("Roboto-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -39,7 +41,8 @@
         style: normal;
         display: swap;
     }
-    src: url("Roboto-Medium.ttf") format("truetype");
+    src: url("Roboto-Medium.woff2") format("woff2"),
+    url("Roboto-Medium.ttf") format("truetype");
 }
 
 @font-face {
@@ -49,7 +52,8 @@
         style: normal;
         display: swap;
     }
-    src: url("Anton-Regular.ttf") format("truetype");
+    src: url("Anton-Regular.woff2") format("woff2"),
+    url("Anton-Regular.ttf") format("truetype");
 }
 
 html {

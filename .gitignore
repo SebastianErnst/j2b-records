@@ -32,6 +32,9 @@ symfony.lock
 # local FTP credential for media sync
 /scripts/.ftp-credential.xml
 
+# CI deployment staging area (zip payload + secrets, built fresh each run)
+/_deploy
+
 # npm
 node_modules
 

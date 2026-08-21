@@ -44,12 +44,29 @@ jobs:
       # Its build output is pre-built and committed under public/build/admin,
       # so it's deployed as-is together with the rest of the repository.
 
+      # Uploading ~16k individual files (mostly vendor/) over FTP is far too slow
+      # (hours). Instead we ship one zip archive plus two tiny PHP hooks, and
+      # extract the archive server-side (see public/deploy-unpack.php).
+      - name: Package deployment archive
+        run: |
+          mkdir -p _deploy/public
+          cp public/deploy-unpack.php _deploy/public/deploy-unpack.php
+          cp public/deploy-cache-clear.php _deploy/public/deploy-cache-clear.php
+          zip -r _deploy/deploy-payload.zip . -x \
+            "_deploy/*" ".git/*" ".git*" ".github/*" ".ddev/*" ".vscode/*" \
+            "*/node_modules/*" "node_modules/*" \
+            "tests/*" "var/*" \
+            ".env.local" ".env.local.php" ".env.*.local" \
+            "public/bundles/*" "public/uploads/*" \
+            "docker-compose*.yml" "phpunit.xml.dist"
+
       # Real secrets never live in the repo. This file only exists on the
       # runner's temporary workspace and is uploaded straight to the server,
-      # it is never committed.
+      # it is never committed. Written into the staging dir (not the repo
+      # root) so it never ends up inside deploy-payload.zip.
       - name: Write production environment file
         run: |
-          cat > .env.local <<EOF
+          cat > _deploy/.env.local <<EOF
           APP_ENV=prod
           APP_DEBUG=0
           APP_URL=${{ secrets.APP_URL }}
@@ -60,9 +77,8 @@ jobs:
           DEPLOY_CACHE_CLEAR_TOKEN=${{ secrets.DEPLOY_CACHE_CLEAR_TOKEN }}
           EOF
 
-      # Shared hosting has no SSH, so var/cache/prod can't be cleared remotely
-      # via bin/console. It is left untouched by the FTP sync (see excludes
-      # below) and instead cleared via the public/deploy-cache-clear.php hook.
+      # Only 4 small files go over FTP now (zip + .env.local + 2 PHP hooks),
+      # so this step finishes in seconds instead of hours.
       - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
@@ -72,21 +88,15 @@ jobs:
           protocol: ftps
           port: 21
           timeout: 120000
-          local-dir: ./
+          local-dir: ./_deploy/
           server-dir: ${{ secrets.FTP_REMOTE_DIR }}
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            **/.ddev/**
-            **/.vscode/**
-            **/node_modules/**
-            **/tests/**
-            **/var/**
-            **/public/bundles/**
-            **/public/uploads/**
-            **/docker-compose*.yml
-            **/phpunit.xml.dist
+
+      # Shared hosting has no SSH, so the payload can't be unzipped or the
+      # cache cleared via bin/console. Both hooks are token-protected (see
+      # public/deploy-unpack.php and public/deploy-cache-clear.php).
+      - name: Extract deployment archive
+        run: |
+          curl -fsS "${{ secrets.APP_URL }}/deploy-unpack.php?token=${{ secrets.DEPLOY_CACHE_CLEAR_TOKEN }}"
 
       - name: Clear production cache
         run: |
